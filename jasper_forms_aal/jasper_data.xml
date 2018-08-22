@@ -7,7 +7,7 @@
 		<delete model="ir.actions.report.xml" search="[('id', '=', ref('purchase.report_purchase_quotation'))]" />
 		<!-- Sale Order -->
 		<record id="aal_sale_order" model="ir.actions.report.xml">
-			<field name="string">Quotation</field>
+			<field name="string">Quotation</field> 
 			<field name="auto">True</field>
 			<field name="model">sale.order</field>
 			<field name="jasper_model_id" ref="sale.model_sale_order"/>
