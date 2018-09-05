@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Quotation" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="35"/>
-	<property name="ireport.y" value="624"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<property name="OPENERP_RELATIONS" value="[&quot;order_line&quot;]"/>
 	<import value="org.apache.commons.codec.binary.Base64"/>
 	<style name="table" lineSpacing="Single">
@@ -179,6 +179,12 @@
 	<field name="attention" class="java.lang.String">
 		<fieldDescription><![CDATA[partner_attn_id/name]]></fieldDescription>
 	</field>
+	<field name="company_tax_id" class="java.lang.String">
+		<fieldDescription><![CDATA[company_id/vat]]></fieldDescription>
+	</field>
+	<field name="company_taxbranch" class="java.lang.String">
+		<fieldDescription><![CDATA[company_id/partner_id/taxbranch]]></fieldDescription>
+	</field>
 	<variable name="price_after_disco" class="java.lang.Number">
 		<variableExpression><![CDATA[(100-$F{discount})/100 * $F{price_unit}]]></variableExpression>
 	</variable>
@@ -265,7 +271,7 @@
 "PURCHASE ORDER"]]></textFieldExpression>
 			</textField>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="99" width="555" height="5" backcolor="#E60D03"/>
+				<reportElement mode="Opaque" x="-1" y="100" width="556" height="5" backcolor="#E60D03"/>
 			</frame>
 			<staticText>
 				<reportElement mode="Transparent" x="348" y="62" width="103" height="14" backcolor="#B5E7D3"/>
@@ -379,7 +385,7 @@
 				<text><![CDATA[ VENDOR]]></text>
 			</staticText>
 			<frame>
-				<reportElement mode="Opaque" x="276" y="150" width="278" height="85" backcolor="#BFBFBF"/>
+				<reportElement mode="Opaque" x="276" y="150" width="279" height="85" backcolor="#BFBFBF"/>
 				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 					<reportElement mode="Transparent" x="47" y="0" width="155" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
@@ -485,7 +491,7 @@
 				</textField>
 			</frame>
 			<staticText>
-				<reportElement style="pading_2" mode="Opaque" x="276" y="130" width="278" height="20" forecolor="#FEFEFE" backcolor="#010101"/>
+				<reportElement style="pading_2" mode="Opaque" x="276" y="130" width="279" height="20" forecolor="#FEFEFE" backcolor="#010101"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Monospaced" size="9" isBold="false" pdfFontName="Garuda.ttf" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 				</textElement>
@@ -583,53 +589,63 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{phone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="4" y="57" width="308" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="4" y="52" width="308" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
 					<font fontName="Monospaced" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Garuda.ttf" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_street}+$F{company_street2}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_street}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="4" y="67" width="308" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="4" y="62" width="308" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
 					<font fontName="Monospaced" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Garuda.ttf" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_zip}+" "+$F{company_country}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_street2}+" "+$F{company_zip}+" "+$F{company_country}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="4" y="77" width="10" height="10"/>
+				<reportElement x="4" y="72" width="10" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Monospaced" size="8" isBold="false" pdfFontName="Garuda.ttf" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[T.]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="14" y="77" width="80" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="14" y="72" width="80" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
 					<font fontName="Monospaced" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Garuda.ttf" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_phone}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="94" y="77" width="10" height="10"/>
+				<reportElement x="94" y="72" width="10" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Monospaced" size="8" isBold="false" pdfFontName="Garuda.ttf" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[F.]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="104" y="77" width="70" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="104" y="72" width="79" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
 					<font fontName="Monospaced" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Garuda.ttf" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_fax}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="167" y="77" width="135" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="4" y="92" width="170" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
 					<font fontName="Monospaced" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Garuda.ttf" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_website}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="4" y="82" width="298" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="Monospaced" size="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Garuda.ttf" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{company_tax_id} == "" ? "" : "Tax ID NO : " + $F{company_tax_id}) +
+($F{company_taxbranch} == "" ?
+    "" : " / " + ($F{company_taxbranch} == "00000" ?
+                            "Branch : Head Office" : "Branch No." + $F{company_taxbranch}))]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

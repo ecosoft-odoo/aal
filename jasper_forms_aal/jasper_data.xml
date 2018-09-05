@@ -149,11 +149,11 @@
 		</record>
 		<!-- Receipt -->
 		<record id="aal_receipt" model="ir.actions.report.xml">
-			<field name="string">Receipt (aal)</field>
+			<field name="string">Receipt (A4)</field>
 			<field name="auto">True</field>
 			<field name="model">account.voucher</field>
 			<field name="jasper_model_id" ref="account_voucher.model_account_voucher"/>
-			<field name="name">Receipt (aal)</field>
+			<field name="name">Receipt (A4)</field>
 			<field name="report_name">aal.receipt</field>
 			<field name="report_rml">jasper_forms_aal/jrxml_reports/aal_receipt.jrxml</field>
 			<field name="menu">True</field>
@@ -162,7 +162,7 @@
 			<field name="jasper_output">pdf</field>
 		</record>
 		<record id="aal_receipt_values" model="ir.values">
-			<field name="name">Receipt (aal)</field>
+			<field name="name">Receipt (A4)</field>
 			<field name="model">account.voucher</field>
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_receipt)"/>
@@ -190,21 +190,21 @@
 		</record>
 		<!-- Receipt A4 -->
 		<record id="aal_receipt_a4" model="ir.actions.report.xml">
-			<field name="string">Receipt (A4)</field>
+			<field name="string">Receipt (aal)</field>
 			<field name="auto">True</field>
 			<field name="model">account.voucher</field>
 			<field name="jasper_model_id" ref="account_voucher.model_account_voucher"/>
-			<field name="name">Receipt (A4)</field>
+			<field name="name">Receipt (aal)</field>
 			<field name="report_name">aal.receipt.a4</field>
 			<field name="report_rml">jasper_forms_aal/jrxml_reports/aal_receipt_a4.jrxml</field>
 			<field name="menu">True</field>
 			<field name="header">False</field>
 			<field name="jasper_report">True</field>
 			<field name="jasper_output">pdf</field>
-			<field name="copies">3</field>
+			<field name="copies">2</field>
 		</record>
 		<record id="aal_receipt_a4_values" model="ir.values">
-			<field name="name">Receipt (A4)</field>
+			<field name="name">Receipt (aal)</field>
 			<field name="model">account.voucher</field>
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_receipt_a4)"/>
@@ -222,6 +222,7 @@
 			<field name="header">False</field>
 			<field name="jasper_report">True</field>
 			<field name="jasper_output">pdf</field>
+			<field name="copies">2</field>
 		</record>
 		<record id="aal_billing_values" model="ir.values">
 			<field name="name">Billing (aal)</field>
@@ -242,7 +243,7 @@
 			<field name="header">False</field>
 			<field name="jasper_report">True</field>
 			<field name="jasper_output">pdf</field>
-			<field name="copies">2</field>
+			<field name="copies">4</field>
 		</record>
 		<record id="aal_delivery_orders_values" model="ir.values">
 			<field name="name">Delivery Orders</field>
@@ -250,7 +251,6 @@
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_delivery_orders)"/>
 		</record>
-
 		<!-- Invisible Report -->
 		<record id="sale.report_sale_order" model="ir.actions.report.xml">
 			<field name="groups_id" eval="[(4, ref('invisible_report'))]"/>

@@ -24,8 +24,7 @@ class common_voucher(object):
         currency = invoice.currency_id.with_context(
             date=invoice.date_invoice or
             datetime.today())
-        company_currency = (journal.currency and
-                            journal.currency.id or
+        company_currency = (journal.currency or
                             journal.company_id.currency_id)
         amount = currency.compute(float(amount), company_currency, round=False)
         return amount
@@ -35,8 +34,7 @@ class common_voucher(object):
         currency = invoice.currency_id.with_context(
             date=invoice.date_invoice or
             datetime.today())
-        company_currency = (journal.currency and
-                            journal.currency.id or
+        company_currency = (journal.currency or
                             journal.company_id.currency_id)
         amount = currency.compute(float(amount), company_currency, round=False)
         return amount
