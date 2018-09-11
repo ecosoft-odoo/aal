@@ -14,11 +14,6 @@
             <field name="sequence_id" ref="doctype_customer_refund_seq"/>
             <field name="refer_type">out_refund</field>
         </record>
-        <record id="doctype_customer_debitnote" model="res.doctype">
-            <field name="name">Customer Debitnote</field>
-            <field name="sequence_id" ref="doctype_customer_debitnote_seq"/>
-            <field name="refer_type">out_invoice_debitnote</field>
-        </record>
         <record id="doctype_supplier_invoice" model="res.doctype">
             <field name="name">Supplier Invoice</field>
             <field name="sequence_id" ref="doctype_supplier_invoice_seq"/>
@@ -28,11 +23,6 @@
             <field name="name">Supplier Refund</field>
             <field name="sequence_id" ref="doctype_supplier_refund_seq"/>
             <field name="refer_type">in_refund</field>
-        </record>
-        <record id="doctype_supplier_debitnote" model="res.doctype">
-            <field name="name">Supplier Debitnote</field>
-            <field name="sequence_id" ref="doctype_supplier_debitnote_seq"/>
-            <field name="refer_type">in_invoice_debitnote</field>
         </record>
     </data>
 </openerp>

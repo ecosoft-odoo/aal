@@ -10,8 +10,6 @@ class AccountInvoice(models.Model):
         for invoice in self:
             # Find doctype
             refer_type = invoice.type
-            if invoice.is_debitnote:
-                refer_type += '_debitnote'
             doctype = self.env['res.doctype'].get_doctype(refer_type)
             # --
             invoice = invoice.with_context(doctype_id=doctype.id)
