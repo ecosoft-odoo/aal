@@ -11,9 +11,7 @@ New menu, > Settings > Technical > Sequences & Identifiers > Doctype
 List of Doctype
 
 * Customer Invoice
-* Customer Debitnote
 * Supplier Invoice
-* Supplier Debitnote
 * Customer Refund
 * Supplier Refund
 
@@ -26,7 +24,6 @@ List of Doctype
     "depends": [
         'l10n_th_doctype_base',
         'account',
-        'account_debitnote',
     ],
     "data": [
         "data/ir_sequence_data.xml",

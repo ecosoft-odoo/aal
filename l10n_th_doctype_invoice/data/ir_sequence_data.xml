@@ -50,29 +50,5 @@
             <field name="special_type">doctype</field>
         </record>
 
-        # Customer Debitnote
-        <record id="doctype_customer_debitnote_seq" model="ir.sequence">
-            <field name="name">DOCTYPE: Customer Debitnote</field>
-            <field name="code"></field>
-            <field name="prefix">DN%(fy)s</field>
-            <field eval="6" name="padding"/>
-            <field eval="1" name="number_next"/>
-            <field eval="1" name="number_increment"/>
-            <field name="implementation">no_gap</field>
-            <field name="special_type">doctype</field>
-        </record>
-
-        # Supplier Debitnote
-        <record id="doctype_supplier_debitnote_seq" model="ir.sequence">
-            <field name="name">DOCTYPE: Supplier Debitnote</field>
-            <field name="code"></field>
-            <field name="prefix">SDN%(fy)s</field>
-            <field eval="6" name="padding"/>
-            <field eval="1" name="number_next"/>
-            <field eval="1" name="number_increment"/>
-            <field name="implementation">no_gap</field>
-            <field name="special_type">doctype</field>
-        </record>
-
     </data>
 </openerp>
