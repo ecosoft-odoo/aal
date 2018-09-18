@@ -317,8 +317,7 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{customer_title} + "" + $F{customer_name}.split("\\(Branch ")[0]+
 "\nTAX ID NO. : " + $F{vat} +
-($F{taxbranch}.toString() == "" ? "" :
-    $F{taxbranch} == "00000" ? "\nBranch : Head Office" : "\nBranch : " + $F{taxbranch})]]></textFieldExpression>
+($F{taxbranch} == "00000" ? "\nBranch : Head Office" : "\nBranch : " + $F{taxbranch})]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="74" y="166" width="229" height="62" forecolor="#000000" backcolor="#FFFFFF"/>

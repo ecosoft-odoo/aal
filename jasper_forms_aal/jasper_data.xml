@@ -5,13 +5,15 @@
 		<!-- Delete -->
 		<delete model="ir.actions.report.xml" search="[('id', '=', ref('purchase.action_report_purchase_order'))]" />
 		<delete model="ir.actions.report.xml" search="[('id', '=', ref('purchase.report_purchase_quotation'))]" />
+		<delete model="ir.actions.report.xml" search="[('id', '=', ref('stock.action_report_picking'))]" />
+		<delete model="ir.actions.report.xml" search="[('id', '=', ref('account.account_invoices'))]" />
 		<!-- Sale Order -->
 		<record id="aal_sale_order" model="ir.actions.report.xml">
-			<field name="string">Quotation</field>
+			<field name="string">Quotation/Sales Order</field>
 			<field name="auto">True</field>
 			<field name="model">sale.order</field>
 			<field name="jasper_model_id" ref="sale.model_sale_order"/>
-			<field name="name">Quotation</field>
+			<field name="name">Quotation / Sales Order</field>
 			<field name="report_name">aal.sale.order</field>
 			<field name="report_rml">jasper_forms_aal/jrxml_reports/aal_sale_order.jrxml</field>
 			<field name="menu">True</field>
@@ -20,12 +22,12 @@
 			<field name="jasper_output">pdf</field>
 		</record>
 		<record id="aal_sale_order_values" model="ir.values">
-			<field name="name">Quotation</field>
+			<field name="name">Quotation/Sales Order</field>
 			<field name="model">sale.order</field>
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_sale_order)"/>
 		</record>
-		<!-- Sale Order (Product Picture) -->
+		Sale Order (Product Picture) -->
 		<record id="aal_sale_order_product_picture" model="ir.actions.report.xml">
 			<field name="string">Quotation (Product Picture)</field>
 			<field name="auto">True</field>
@@ -46,7 +48,7 @@
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_sale_order_product_picture)"/>
 		</record>
 		<!-- Envelope Cover -->
-		<record id="aal_envelope_cover" model="ir.actions.report.xml">
+		<!-- <record id="aal_envelope_cover" model="ir.actions.report.xml">
 			<field name="string">Envelope Cover</field>
 			<field name="auto">True</field>
 			<field name="model">sale.order</field>
@@ -64,7 +66,7 @@
 			<field name="model">sale.order</field>
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_envelope_cover)"/>
-		</record>
+		</record> -->
 		<!-- RFQ / PO -->
 		<record id="aal_purchase_order" model="ir.actions.report.xml">
 			<field name="string">PO (aal)</field>
@@ -86,7 +88,7 @@
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_purchase_order)"/>
 		</record>
 		<!-- Tax Invoice -->
-		<record id="aal_tax_invoice" model="ir.actions.report.xml">
+		<!-- <record id="aal_tax_invoice" model="ir.actions.report.xml">
 			<field name="string">Tax Invoice (A4)</field>
 			<field name="auto">True</field>
 			<field name="model">account.invoice</field>
@@ -104,9 +106,9 @@
 			<field name="model">account.invoice</field>
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_tax_invoice)"/>
-		</record>
+		</record> -->
 		<!-- Tax invoice (Pre-print form) -->
-		<record id="aal_tax_invoice_pre_print_form" model="ir.actions.report.xml">
+		<!-- <record id="aal_tax_invoice_pre_print_form" model="ir.actions.report.xml">
 			<field name="string">Tax Invoice (PP)</field>
 			<field name="auto">True</field>
 			<field name="model">account.invoice</field>
@@ -125,7 +127,7 @@
 			<field name="model">account.invoice</field>
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_tax_invoice_pre_print_form)"/>
-		</record>
+		</record> -->
 		<!-- Tax invoice A4 -->
 		<record id="aal_tax_invoice_a4" model="ir.actions.report.xml">
 			<field name="string">Tax Invoice (aal)</field>
@@ -147,8 +149,31 @@
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_tax_invoice_a4)"/>
 		</record>
+
+		<!-- Tax invoice Abroad -->
+		<record id="aal_tax_invoice_abroad" model="ir.actions.report.xml">
+			<field name="string">Tax Invoice (abroad)</field>
+			<field name="auto">True</field>
+			<field name="model">account.invoice.abroad</field>
+			<field name="jasper_model_id" ref="account.model_account_invoice"/>
+			<field name="name">Tax Invoice (abroad)</field>
+			<field name="report_name">aal.tax.invoice.abroad</field>
+			<field name="report_rml">jasper_forms_aal/jrxml_reports/aal_tax_invoice_abroad.jrxml</field>
+			<field name="menu">True</field>
+			<field name="header">False</field>
+			<field name="jasper_report">True</field>
+			<field name="jasper_output">pdf</field>
+			<field name="copies">4</field>
+		</record>
+		<record id="aal_tax_invoice_abroad_values" model="ir.values">
+			<field name="name">Tax Invoice (abroad)</field>
+			<field name="model">account.invoice</field>
+			<field name="key2" eval="'client_print_multi'"/>
+			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_tax_invoice_abroad)"/>
+		</record>
+
 		<!-- Receipt -->
-		<record id="aal_receipt" model="ir.actions.report.xml">
+		<!-- <record id="aal_receipt" model="ir.actions.report.xml">
 			<field name="string">Receipt (A4)</field>
 			<field name="auto">True</field>
 			<field name="model">account.voucher</field>
@@ -166,9 +191,9 @@
 			<field name="model">account.voucher</field>
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_receipt)"/>
-		</record>
+		</record> -->
 		<!-- Receipt (Pre-print form) -->
-		<record id="aal_receipt_pre_print_form" model="ir.actions.report.xml">
+		<!-- <record id="aal_receipt_pre_print_form" model="ir.actions.report.xml">
 			<field name="string">Receipt (PP)</field>
 			<field name="auto">True</field>
 			<field name="model">account.voucher</field>
@@ -187,7 +212,7 @@
 			<field name="model">account.voucher</field>
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_receipt_pre_print_form)"/>
-		</record>
+		</record> -->
 		<!-- Receipt A4 -->
 		<record id="aal_receipt_a4" model="ir.actions.report.xml">
 			<field name="string">Receipt (aal)</field>
@@ -250,6 +275,27 @@
 			<field name="model">stock.picking</field>
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_delivery_orders)"/>
+		</record>
+		<!-- Picking Lists -->
+		<record id="aal_picking_list" model="ir.actions.report.xml">
+			<field name="string">Picking List</field>
+			<field name="auto">True</field>
+			<field name="model">stock.picking</field>
+			<field name="jasper_model_id" ref="stock.model_stock_picking"/>
+			<field name="name">Picking List</field>
+			<field name="report_name">picking.list</field>
+			<field name="report_rml">jasper_forms_aal/jrxml_reports/aal_picking_list.jrxml</field>
+			<field name="menu">True</field>
+			<field name="header">False</field>
+			<field name="jasper_report">True</field>
+			<field name="jasper_output">pdf</field>
+			<field name="copies">4</field>
+		</record>
+		<record id="aal_picking_list_values" model="ir.values">
+			<field name="name">Picking List</field>
+			<field name="model">stock.picking</field>
+			<field name="key2" eval="'client_print_multi'"/>
+			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_picking_list)"/>
 		</record>
 		<!-- Invisible Report -->
 		<record id="sale.report_sale_order" model="ir.actions.report.xml">

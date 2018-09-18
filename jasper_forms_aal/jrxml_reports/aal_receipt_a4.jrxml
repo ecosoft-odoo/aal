@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="aal_receipt_a4" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2149"/>
+	<property name="ireport.y" value="37"/>
 	<property name="OPENERP_RELATIONS" value="[&quot;line_ids&quot;]"/>
 	<style name="space_detail">
 		<box leftPadding="3" rightPadding="3"/>
@@ -394,8 +394,7 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{title} + "" + $F{partner_name}.split("\\(Branch")[0]+
 "\nTAX ID NO. : " + $F{vat} +
-($F{taxbranch}.toString() == "" ? "" :
-    $F{taxbranch} == "00000" ? "\nBranch : Head Office" : "\nBranch : " + $F{taxbranch})]]></textFieldExpression>
+($F{taxbranch} == "00000" ? "\nBranch : Head Office" : "\nBranch : " + $F{taxbranch})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="355" y="147" width="204" height="61" forecolor="#000000" backcolor="#FFFFFF"/>
