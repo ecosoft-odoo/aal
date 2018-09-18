@@ -5,6 +5,8 @@
 		<!-- Delete -->
 		<delete model="ir.actions.report.xml" search="[('id', '=', ref('purchase.action_report_purchase_order'))]" />
 		<delete model="ir.actions.report.xml" search="[('id', '=', ref('purchase.report_purchase_quotation'))]" />
+		<delete model="ir.actions.report.xml" search="[('id', '=', ref('stock.action_report_picking'))]" />
+		<delete model="ir.actions.report.xml" search="[('id', '=', ref('account.account_invoices'))]" />
 		<!-- Sale Order -->
 		<record id="aal_sale_order" model="ir.actions.report.xml">
 			<field name="string">Quotation</field>
