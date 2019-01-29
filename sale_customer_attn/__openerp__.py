@@ -17,6 +17,7 @@
     },
     "depends": [
         "sale",
+        "sale_order_dates",
     ],
     "data": [
         "views/sale_view.xml",
