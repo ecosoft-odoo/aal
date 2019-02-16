@@ -67,7 +67,27 @@
 			<field name="key2" eval="'client_print_multi'"/>
 			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_envelope_cover)"/>
 		</record> -->
-		<!-- RFQ / PO -->
+		<!-- RFQ -->
+		<record id="aal_request_for_quotation" model="ir.actions.report.xml">
+			<field name="string">RFQ (aal)</field>
+			<field name="auto">True</field>
+			<field name="model">purchase.order</field>
+			<field name="jasper_model_id" ref="purchase.model_purchase_order"/>
+			<field name="name">RFQ (aal)</field>
+			<field name="report_name">aal.request.for.quotation</field>
+			<field name="report_rml">jasper_forms_aal/jrxml_reports/aal_request_for_quotation.jrxml</field>
+			<field name="menu">True</field>
+			<field name="header">False</field>
+			<field name="jasper_report">True</field>
+			<field name="jasper_output">pdf</field>
+		</record>
+		<record id="aal_request_for_quotation_values" model="ir.values">
+			<field name="name">RFQ (aal)</field>
+			<field name="model">purchase.order</field>
+			<field name="key2" eval="'client_print_multi'"/>
+			<field name="value_unpickle" eval="'ir.actions.report.xml, ' +str(aal_request_for_quotation)"/>
+		</record>
+		<!-- PO -->
 		<record id="aal_purchase_order" model="ir.actions.report.xml">
 			<field name="string">PO (aal)</field>
 			<field name="auto">True</field>

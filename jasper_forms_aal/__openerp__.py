@@ -10,6 +10,7 @@
         'sale_customer_attn',
         'purchase_delivery_method',
         'l10n_th_amount_text_ext',
+        'module_adjust_aal',
     ],
     'data': [
         "security/jasper_forms_aal_security.xml",
