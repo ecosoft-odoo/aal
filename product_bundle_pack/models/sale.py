@@ -40,7 +40,7 @@ class sale_order(osv.osv):
                     'origin': order.name,
                     'date_planned': date_planned,
                     'product_id': item.item_id.id,
-                    'product_qty': item.qty_uom or 0.00,
+                    'product_qty': item.qty_uom * line.product_uom_qty or 0.00,
                     'product_uom': item.uom_id and item.uom_id.id or False,
                     'product_uos_qty': (line.product_uos and line.product_uos_qty) or line.product_uom_qty,
                     'product_uos': (line.product_uos and line.product_uos.id) or line.product_uom.id,
@@ -53,7 +53,7 @@ class sale_order(osv.osv):
                     'route_ids': line.route_id and [(4, line.route_id.id)] or [],
                     'partner_dest_id': line.order_id.partner_shipping_id.id,
                 })
-        else:    
+        else:
             res.append({
                 'name': line.name,
                 'origin': order.name,
@@ -132,7 +132,7 @@ class SaleOrderLine(models.Model):
                     'origin': self.order_id.name,
                     'date_planned': datetime.strptime(self.order_id.date_order, DEFAULT_SERVER_DATETIME_FORMAT) + timedelta(days=self.customer_lead),
                     'product_id': item.item_id.id,
-                    'product_qty': item.qty_uom,
+                    'product_qty': item.qty_uom * self.product_uom_qty,
                     'product_uom': item.uom_id and item.uom_id.id,
                     'company_id': self.order_id.company_id.id,
                     'group_id': group_id,
