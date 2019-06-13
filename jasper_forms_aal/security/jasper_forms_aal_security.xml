@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data noupdate="1">
-        <record id="invisible_report" model="res.groups">
-            <field name="name">Invisible Report</field>
-        </record>
-    </data>
-</openerp>

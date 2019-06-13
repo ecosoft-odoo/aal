@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_product_item_public_user,product.bundle.pack.public.user,model_product_item,,1,0,0,0
-access_product_pack_sales_user,product.bundle.manager,model_product_item,base.group_sale_salesman,1,1,1,1
