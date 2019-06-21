@@ -1,0 +1,44 @@
+// style header
+.header {
+    table tr td {
+        font-size: 12px;
+    }
+}
+// style purchase order
+.purchase_order_form {
+    .topic {
+        background-color: black;
+        color: white;
+    }
+    .content {
+        background-color: silver;
+    }
+    .table_company_data {
+        thead {
+            background-color: black;
+            color: white;
+        }
+        tbody {
+            background-color: silver;
+        }
+    }
+    .table_data {
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-right-style: solid;
+        thead {
+            background-color: black;
+            color: white;
+        }
+    }
+    .table_approve {
+        thead {
+            background-color: red;
+            color: white;
+        }
+        tbody {
+            background-color: silver;
+        }
+    }
+
+}
