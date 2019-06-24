@@ -5,5 +5,6 @@
             name="aal_purchase_form.aal_purchase_order_form_pdf"
             file="aal_purchase_form.aal_purchase_order_form_pdf"
             report_type="qweb-pdf"
-            print_report_name="'PO - [%s]' % object.display_name"/>
+            print_report_name="'Purchase Order - [%s]' % object.display_name"
+            paperformat="aal_purchase_form.paperformat_aal_purchase_order"/>
 </odoo>

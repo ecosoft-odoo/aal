@@ -11,10 +11,10 @@
     'depends': [
         'web',
         'purchase',
-        'partner_fax',
     ],
     'data': [
         'data/report_data.xml',
+        'data/paper_format.xml',
         'reports/purchase_order_form.xml',
         'reports/purchase_style.xml',
     ],
