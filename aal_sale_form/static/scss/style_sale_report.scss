@@ -1,0 +1,46 @@
+// style header
+.header {
+    table tr td {
+        font-size: 12px;
+    }
+    .red_line {
+      border: 3px solid red;
+    }
+}
+// style quotation
+.quotation_form {
+    .table_company_data {
+        thead {
+            background-color: black;
+            color: white;
+        }
+    }
+    .table_data {
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-right-style: solid;
+        thead {
+            background-color: black;
+            color: white;
+        }
+    }
+    .table_managing_director {
+        thead {
+            background-color: black;
+            color: white;
+        }
+        tbody {
+            background-color: silver;
+        }
+    }
+    .table_customer {
+        thead {
+            background-color: red;
+            color: white;
+        }
+        tbody {
+            background-color: silver;
+        }
+    }
+
+}

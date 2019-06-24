@@ -1,0 +1,7 @@
+<odoo>
+    <template id="report_assets_common" name="Sale Order common assets" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/scss" href="/aal_sale_form/static/scss/style_sale_report.scss"/>
+        </xpath>
+    </template>
+</odoo>

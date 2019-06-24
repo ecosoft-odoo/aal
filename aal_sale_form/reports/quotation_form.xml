@@ -1,5 +1,5 @@
 <odoo>
-    <template id="aal_purchase_order_form">
+    <template id="aal_quotation_form">
         <div class="header">
             <div class="row">
                 <div class="col-5">
@@ -19,7 +19,7 @@
                     </table>
                 </div>
                 <div class="col-7">
-                    <h2 class="text-right">PURCHASE ORDER</h2><br/>
+                        <h2 class="text-right">QUOTATION</h2><br/>
                     <div class="row">
                         <div class="col-9 text-right">
                             <p>
@@ -38,43 +38,25 @@
             </div>
             <hr class="red_line"/>
         </div>
-        <div class="article purchase_order_form">
+        <div class="article quotation_form">
+            <table class="table table-sm table-borderless table_company_data">
+                <thead>
+                    <tr class="text-center">
+                        <th>CUSTOMER DETAILS</th>
+                    </tr>
+                </thead>
+            </table>
             <div class="row">
-                <div class="col-6">
-                    <div class="row table" style="margin-left: 0px;">
-                        <div class="col-6 topic">
-                            <b>DELIVERY METHOD</b>
-                        </div>
-                        <div class="col-6 content">
-                            <span/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="row table" style="margin-left: 0px;">
-                        <div class="col-4 topic">
-                            <b>INCOTERM</b>
-                        </div>
-                        <div class="col-2 content"/>
-                        <div class="col-4 topic">
-                            <b>CURRENCY</b>
-                        </div>
-                        <div class="col-2 content"/>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt8">
-                <div class="col-6">
+                <div class="col-8">
                     <table class="table table-sm table-borderless table_company_data">
-                        <thead>
-                            <tr>
-                                <th colspan="2">VENDOR</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
-                                <td>Name:</td>
-                                <td><span t-field="o.partner_id"/></td>
+                                <td>ATTN:</td>
+                                <td><span t-field="o.partner_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td>NAME:</td>
+                                <td><span t-field="o.partner_id.name"/></td>
                             </tr>
                             <tr>
                                 <td>Address:</td>
@@ -87,6 +69,12 @@
                                     <span t-field="o.partner_id.zip"/>
                                 </td>
                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-4">
+                    <table class="table table-sm table-borderless table_company_data">
+                        <tbody>
                             <tr>
                                 <td>Tel:</td>
                                 <td><span t-field="o.partner_id.phone"/></td>
@@ -99,83 +87,45 @@
                                 <td>E-mail:</td>
                                 <td><span t-field="o.partner_id.email"/></td>
                             </tr>
-                            <tr>
-                                <td>Attn:</td>
-                                <td><span t-field="o.partner_id.name"/></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-6">
-                    <table class="table table-sm table-borderless table_company_data">
-                        <thead>
-                            <tr>
-                                <th colspan="2">SHIP TO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Name:</td>
-                                <td><span t-field="o.company_id.name"/></td>
-                            </tr>
-                            <tr>
-                                <td>Address:</td>
-                                <td>
-                                    <span t-field="o.company_id.street"/>
-                                    <span t-field="o.company_id.street2"/>
-                                    <span t-field="o.company_id.city"/>
-                                    <span t-field="o.company_id.state_id.name"/>
-                                    <span t-field="o.company_id.country_id.name"/>
-                                    <span t-field="o.company_id.zip"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tel:</td>
-                                <td><span t-field="o.company_id.phone"/></td>
-                            </tr>
-                            <tr>
-                                <td>Fax:</td>
-                                <td>+662 249 4283</td>
-                            </tr>
-                            <tr>
-                                <td>E-mail:</td>
-                                <td><span t-field="o.partner_id.email"/></td>
-                            </tr>
-                            <tr>
-                                <td>Attn:</td>
-                                <td>Mr.Nat Yisunsri</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-            <table class="table table-borderless table_data mt16">
+            <table class="table table-sm table-borderless table_data mt16">
                 <thead>
-                    <tr class="text-center">
-                        <th>MODEL NUMBER - DESCRIPTION</th>
-                        <th>QUANTITY</th>
-                        <th>UOM</th>
+                    <tr class="text-center" valign="text-middle">
+                        <th>Model No.</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
                         <th>Unit Price</th>
-                        <th>Subtotal</th>
+                        <th>Discount<br/>(%)</th>
+                        <th>Unit Price<br/>(after disc.)</th>
+                        <th>TOTAL<br/>(THB)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr t-foreach="o.order_line" t-as="line">
                         <td>
-                            <span t-field="line.name"/>
+                            <span t-field="line.product_id.default_code"/>
+                        </td>
+                        <td>
+                            <span t-field="line.product_id"/>
                         </td>
                         <td class="text-center">
-                            <span t-field="line.product_qty"/>
-                        </td>
-                        <td class="text-center">
-                            <span t-field="line.product_uom"/>
+                            <span t-field="line.product_uom_qty"/>
                         </td>
                         <td class="text-right">
-                            <span t-field="line.price_unit" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                            <span t-field="line.price_unit"/>
                         </td>
                         <td class="text-right">
-                            <span t-field="line.price_subtotal" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                            <span t-field="line.discount"/>
+                        </td>
+                        <td class="text-right">
+                            <t t-set="price_unit_after_discount" t-value="(1 - line.discount) * line.price_unit"/>
+                            <span t-esc="price_unit_after_discount"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.price_subtotal"/>
                         </td>
                     </tr>
                 </tbody>
@@ -184,6 +134,7 @@
             <div class="clearfix">
                 <div class="row">
                     <div class="col-6">
+                        REMARK.
                     </div>
                     <div class="col-6">
                         <table class="table table-sm table-borderless">
@@ -217,26 +168,21 @@
                 </div>
                 <div class="row mt8">
                     <div class="col-6">
-                        <table class="table table-sm table_company_data">
+                    </div>
+                    <div class="col-6">
+                        <table class="table table-sm table_managing_director">
                             <thead>
-                                <th>***Note / Instruction***</th>
+                                <th>MANAGING DIRECTOR</th>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <t t-if="o.notes">
-                                        <td><span t-field="o.notes"/></td>
-                                    </t>
-                                    <t t-if="not o.notes">
-                                        <td><br/><br/><br/></td>
-                                    </t>
+                                    <td><br/><br/><br/></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="col-6">
-                        <table class="table table-sm table_approve">
+                        <table class="table table-sm table_customer">
                             <thead>
-                                <th>APPROVED BY</th>
+                                <th>CUSTOMER</th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -251,10 +197,10 @@
         </div>
     </template>
 
-    <template id="aal_purchase_order_form_pdf">
+    <template id="aal_quotation_form_pdf">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="aal_purchase_form.aal_purchase_order_form"/>
+                <t t-call="aal_sale_form.aal_quotation_form"/>
             </t>
         </t>
     </template>

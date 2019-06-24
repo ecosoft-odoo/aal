@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 {
-    'name': 'AAL_Purchase_Form',
+    'name': 'AAL_Sale_Form',
     'version': '12.0.1.0.0',
     'author': 'Ecosoft',
     'license': 'AGPL-3',
@@ -10,13 +10,13 @@
     'category': 'Report',
     'depends': [
         'web',
-        'purchase',
+        'sale',
     ],
     'data': [
-        'data/report_data.xml',
         'data/paper_format.xml',
-        'reports/purchase_order_form.xml',
-        'reports/purchase_style.xml',
+        'data/report_data.xml',
+        'reports/quotation_form.xml',
+        'reports/sale_style.xml',
     ],
     'installable': True,
 }

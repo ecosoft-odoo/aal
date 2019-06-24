@@ -1,0 +1,10 @@
+<odoo>
+    <report string="Quotation / ใบเสนอราคา"
+            id="aal_quotation_form_pdf_report"
+            model="sale.order"
+            name="aal_sale_form.aal_quotation_form_pdf"
+            file="aal_sale_form.aal_quotation_form_pdf"
+            report_type="qweb-pdf"
+            print_report_name="'Quotation - [%s]' % object.display_name"
+            paperformat="aal_sale_form.paperformat_aal_sale_order"/>
+</odoo>
