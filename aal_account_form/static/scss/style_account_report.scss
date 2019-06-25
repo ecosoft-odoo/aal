@@ -1,0 +1,68 @@
+// style header
+.header {
+    table tr td {
+        font-size: 12px;
+    }
+}
+// style Tax Invoice
+.tax_invoice_form {
+    font-size: 14px;
+    .table_company_data {
+        thead {
+            background-color: black;
+            color: white;
+        }
+    }
+    .table_data {
+        thead {
+            background-color: black;
+            color: white;
+        }
+    }
+    .table_signature {
+        thead {
+            background-color: black;
+            color: white;
+        }
+        tbody {
+            background-color: silver;
+        }
+    }
+    .horizontal_line {
+        border-bottom:1px solid black;
+    }
+    .horizontal_double_line {
+        border-bottom: double;
+    }
+}
+// style Receipt
+.receipt_form {
+    font-size: 14px;
+    .table_company_data {
+        thead {
+            background-color: black;
+            color: white;
+        }
+    }
+    .table_data {
+        thead {
+            background-color: black;
+            color: white;
+        }
+    }
+    .table_signature {
+        thead {
+            background-color: black;
+            color: white;
+        }
+        tbody {
+            background-color: silver;
+        }
+    }
+    .horizontal_line {
+        border-bottom:1px solid black;
+    }
+    .horizontal_double_line {
+        border-bottom: double;
+    }
+}
