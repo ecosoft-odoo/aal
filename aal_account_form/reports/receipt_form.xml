@@ -1,0 +1,206 @@
+<odoo>
+    <template id="aal_receipt_form">
+        <div class="header">
+            <div class="row">
+                <div class="col-5">
+                    <div>
+                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" alt="Logo" style="max-height: 75px;"/>
+                    </div>
+                    <table class="mt16">
+                        <tr>
+                            <td colspan="2">
+                                25 Soi Phraya Phiren, Chuaploeng Road, Sathon, Bangkok 10120 Thailand
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>T. +662 240 1331-2</td>
+                            <td>F. +662 249 4283</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Tax ID NO : 0105556132541 / Branch : Head office</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-7">
+                    <h2 class="text-right">
+                        <t t-if="i == 0">
+                            RECEIPT (ORIGINAL)
+                        </t>
+                        <t t-if="i != 0">
+                            RECEIPT (COPY)
+                        </t>
+                    </h2>
+                    <div class="row mt32">
+                        <div class="col-6 text-right">
+                            <p>
+                                Document No. :<br/>
+                                Date :<br/>
+                                Page :
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span t-field="o.name"/><br/>
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/>
+                            <span class="page"/> / <span class="topage"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article receipt_form">
+            <table class="table table-sm table-borderless table_company_data">
+                <thead>
+                    <tr class="text-center">
+                        <th>CUSTOMER DETAILS</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-3">
+                            NAME :<br/>
+                        </div>
+                        <div class="col-9">
+                            <span t-field="o.partner_id.name"/><br/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            TAX ID NO. :<br/>
+                            Branch :
+                        </div>
+                        <div class="col-9">
+                            <span t-field="o.partner_id.vat"/><br/>
+                            Head Office
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-3">
+                            ADDRESS :
+                        </div>
+                        <div class="col-9">
+                            <span t-field="o.partner_id.street"/>
+                            <span t-field="o.partner_id.street2"/>
+                            <span t-field="o.partner_id.city"/>
+                            <span t-field="o.partner_id.state_id.name"/>
+                            <span t-field="o.partner_id.country_id.name"/>
+                            <span t-field="o.partner_id.zip"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-sm table-borderless table_data mt16">
+                <thead>
+                    <tr class="text-center" valign="text-middle">
+                        <th>NO.</th>
+                        <th>DOCUMANT NO.</th>
+                        <th>INVOICE DATE</th>
+                        <th>AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            <span t-field="o.communication"/>
+                        </td>
+                        <td>
+                            <span t-field="o.payment_date"/>
+                        </td>
+                        <td>
+                            <span t-esc="float('%.2f' % o.amount)"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="clearfix">
+                <div class="row">
+                    <div class="col-8">
+                    </div>
+                    <div class="col-2 text-right">
+                        <strong>Grand Total</strong>
+                    </div>
+                    <div class="col-2 text-right horizontal_line">
+                        <span t-esc="float('%.2f' % o.amount)"/>
+                    </div>
+                </div>
+
+                <div class="mt16">
+                    การชำระเงินด้วยเช็คจะสมบูรณ์เมื่อบริษัทฯ ได้รับเงินตามเช็คเรียบร้อยแล้ว และจะต้องมีรายมือชื่อผู้รับเงิน<br/>
+                    เงินสด...............................................บาท เงินโอน..................................................บาท ธนาคาร....................................................................<br/>
+                    เช็คธนาคาร/สาขา..........................................เช็คเลขที่.....................................ลงวันที่........./........./......... จำนวนเงิน............................บาท<br/>
+                    เช็คธนาคาร/สาขา..........................................เช็คเลขที่.....................................ลงวันที่........./........./......... จำนวนเงิน............................บาท<br/>
+                    เช็คธนาคาร/สาขา..........................................เช็คเลขที่.....................................ลงวันที่........./........./......... จำนวนเงิน............................บาท
+                </div>
+
+                <div class="row mt16">
+                    <div class="col-4">
+                        <table class="table table-sm table_signature">
+                            <thead>
+                                <th>Received by</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><br/><br/><br/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-3">
+                                Date :
+                            </div>
+                            <div class="col-9 horizontal_line">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2"/>
+                    <div class="col-4">
+                        <table class="table table-sm table_signature">
+                            <thead>
+                                <th>Authorised Signature</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><br/><br/><br/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-3">
+                                Date :
+                            </div>
+                            <div class="col-9 horizontal_line">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2"/>
+                </div>
+            </div>
+        </div>
+        <div class="footer text-right">
+            <t t-if="i == 0">
+                FOR CUSTOMER / สำหรับลูกค้า
+            </t>
+            <t t-if="i != 0">
+                FOR COMPANY / สำหรับบริษัท
+            </t>
+        </div>
+    </template>
+
+    <template id="aal_receipt_form_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="ncopies" t-value="3"/>
+                <t t-foreach="range(ncopies)" t-as="i">
+                    <t t-call="aal_account_form.aal_receipt_form"/>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

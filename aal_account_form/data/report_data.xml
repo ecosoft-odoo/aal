@@ -1,0 +1,19 @@
+<odoo>
+    <report string="Delivery Order/Tax Invoice ใบส่งสินค้า/ใบกำกำกับภาษี"
+            id="aal_tax_invoice_form_pdf_report"
+            model="account.invoice"
+            name="aal_account_form.aal_tax_invoice_form_pdf"
+            file="aal_account_form.aal_tax_invoice_form_pdf"
+            report_type="qweb-pdf"
+            print_report_name="'Tax Invoice - [%s]' % object.display_name"
+            paperformat="aal_account_form.paperformat_aal_tax_invoice"/>
+
+    <report string="Receipt / ใบเสร็จรับเงิน"
+            id="aal_receipt_form_pdf_report"
+            model="account.payment"
+            name="aal_account_form.aal_receipt_form_pdf"
+            file="aal_account_form.aal_receipt_form_pdf"
+            report_type="qweb-pdf"
+            print_report_name="'Receipt - [%s]' % object.display_name"
+            paperformat="aal_account_form.paperformat_aal_tax_invoice"/>
+</odoo>
