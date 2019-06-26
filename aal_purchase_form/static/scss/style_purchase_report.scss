@@ -26,12 +26,12 @@
         }
     }
     .table_data {
-        border-bottom-style: solid;
-        border-left-style: solid;
-        border-right-style: solid;
         thead {
             background-color: black;
             color: white;
+        }
+        tbody {
+            border-bottom: 1px solid lightgray;
         }
     }
     .table_approve {
@@ -43,5 +43,13 @@
             background-color: silver;
         }
     }
-
+    .horizontal_line {
+        border-bottom: 1px solid black;
+    }
+    .horizontal_double_line {
+        border-bottom: double;
+    }
+    .horizontal_dot_line {
+        border-bottom: 1px dotted black;
+    }
 }

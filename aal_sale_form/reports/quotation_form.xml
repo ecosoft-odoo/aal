@@ -9,12 +9,21 @@
                     <table class="mt16">
                         <tr>
                             <td colspan="2">
-                                25 Soi Phraya Phiren, Chuaploeng Road, Sathon, Bangkok 10120 Thailand
+                                <span t-field="o.company_id.street"/><br/>
+                                <span t-field="o.company_id.street2"/>
+                                <span t-field="o.company_id.city"/>
+                                <span t-field="o.company_id.state_id.name"/>
+                                <span t-field="o.company_id.country_id.name"/>
+                                <span t-field="o.company_id.zip"/>
                             </td>
                         </tr>
                         <tr>
-                            <td>T. +662 240 1331-2</td>
+                            <td>T. <span t-field="o.company_id.phone"/></td>
                             <td>F. +662 249 4283</td>
+                        </tr>
+                        <tr>
+                            <td>TAX ID NO.: <span t-field="o.company_id.vat"/></td>
+                            <td>Branch: <span t-field="o.company_id.partner_id.branch"/></td>
                         </tr>
                     </table>
                 </div>
@@ -36,7 +45,6 @@
                     </div>
                 </div>
             </div>
-            <hr class="red_line"/>
         </div>
         <div class="article quotation_form">
             <table class="table table-sm table-borderless table_company_data">
@@ -87,6 +95,10 @@
                                 <td>E-mail:</td>
                                 <td><span t-field="o.partner_id.email"/></td>
                             </tr>
+                            <tr>
+                                <td>Reference:</td>
+                                <td><span t-field="o.client_order_ref"/></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -109,7 +121,7 @@
                             <span t-field="line.product_id.default_code"/>
                         </td>
                         <td>
-                            <span t-field="line.product_id"/>
+                            <span t-field="line.name"/>
                         </td>
                         <td class="text-center">
                             <span t-field="line.product_uom_qty"/>
@@ -121,11 +133,11 @@
                             <span t-field="line.discount"/>
                         </td>
                         <td class="text-right">
-                            <t t-set="price_unit_after_discount" t-value="(1 - line.discount) * line.price_unit"/>
-                            <span t-esc="price_unit_after_discount"/>
+                            <t t-set="price_unit_after_discount" t-value="line.price_subtotal / line.product_uom_qty"/>
+                            <span t-esc="'{0:,.2f}'.format(price_unit_after_discount)"/>
                         </td>
                         <td class="text-right">
-                            <span t-field="line.price_subtotal"/>
+                            <span t-esc="'{0:,.2f}'.format(line.price_subtotal)"/>
                         </td>
                     </tr>
                 </tbody>
@@ -142,37 +154,34 @@
                                 <td class="text-right">
                                     <strong>TOTAL BEFORE VAT</strong>
                                 </td>
-                                <td class="text-right">
-                                    <span t-field="o.amount_untaxed" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                <td class="text-right horizontal_line">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_untaxed)"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-right">
-                                    <strong>VAT</strong>
+                                    <strong>VAT 7%</strong>
                                 </td>
-                                <td class="text-right">
-                                    <t t-set="amount_tax" t-value="o.amount_tax"/>
-                                    <span t-esc="amount_tax" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                <td class="text-right horizontal_line">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_tax)"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-right">
                                     <strong>Grand Total</strong>
                                 </td>
-                                <td class="text-right">
-                                    <span t-field="o.amount_total" t-options='{"widget": "monetary"}'/>
+                                <td class="text-right horizontal_double_line">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_total)"/>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div class="row mt8">
-                    <div class="col-6">
-                    </div>
-                    <div class="col-6">
-                        <table class="table table-sm table_managing_director">
+                <div class="row mt16">
+                    <div class="col-4">
+                        <table class="table table-sm table_signature_box">
                             <thead>
-                                <th>MANAGING DIRECTOR</th>
+                                <th>เจ้าหน้าที่ฝ่ายขาย/SALES EXECUTIVE</th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -180,9 +189,47 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-4">
+                        <table class="table table-sm table_signature_box">
+                            <thead>
+                                <th>ผู้จัดการฝ่ายขาย/SALES MANAGER</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><br/><br/><br/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-4">
+                        <table class="table table-sm table_signature_box">
+                            <thead>
+                                <th>กรรมการผู้จัดการ/MANAGING DIRECTOR</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><br/><br/><br/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-center" style="font-size: 11px;">(วรศักดิ์ เกษมธนกุล/VORASAK KASEMTANAKUL)</p>
+                    </div>
+                </div>
+                <div class="row mt16">
+                    <div class="col-8">
+                        <small>
+                            โปรดลงนามและประทับตราเพื่อยืนยันการสั่งซื้อ และกรุณาส่งกลับมายังบริษัท คอมฟอทต้า จำกัด<br/>
+                            To accept this quotation, please sign in the customer box and return via Fax or Email.<br/>
+                            <br/>
+                            Fax: +662-249-4283<br/>
+                            Email: Order@comforta.co.th
+                        </small>
+                    </div>
+                    <div class="col-4">
                         <table class="table table-sm table_customer">
                             <thead>
-                                <th>CUSTOMER</th>
+                                <th>ผู้สั่งซื้อ/CUSTOMER</th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -190,7 +237,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="mt64 text-right">(............................................................................................)</p>
+                        <p class="text-center">(.............................................................)</p>
                     </div>
                 </div>
             </div>

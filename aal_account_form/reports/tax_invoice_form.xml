@@ -4,26 +4,39 @@
             <div class="row">
                 <div class="col-5">
                     <div>
-                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" alt="Logo" style="max-height: 75px;"/>
+                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height: 75px;"/>
                     </div>
                     <table class="mt16">
                         <tr>
                             <td colspan="2">
-                                25 Soi Phraya Phiren, Chuaploeng Road, Sathon, Bangkok 10120 Thailand
+                                <span t-field="o.company_id.street"/><br/>
+                                <span t-field="o.company_id.street2"/>
+                                <span t-field="o.company_id.city"/>
+                                <span t-field="o.company_id.state_id.name"/>
+                                <span t-field="o.company_id.country_id.name"/>
+                                <span t-field="o.company_id.zip"/>
                             </td>
                         </tr>
                         <tr>
-                            <td>T. +662 240 1331-2</td>
+                            <td>T. <span t-field="o.company_id.phone"/></td>
                             <td>F. +662 249 4283</td>
                         </tr>
                         <tr>
-                            <td colspan="2">Tax ID NO : 0105556132541 / Branch : Head office</td>
+                            <td>TAX ID NO.: <span t-field="o.company_id.vat"/></td>
+                            <td>Branch: <span t-field="o.company_id.partner_id.branch"/></td>
                         </tr>
                     </table>
                 </div>
                 <div class="col-7">
-                        <h4 class="text-right">DELIVERY ORDER/TAX INVOICE (ORIGINAL)</h4><br/>
-                    <div class="row">
+                    <h4 class="text-right">
+                        <t t-if="i == 0">
+                            DELIVERY ORDER/TAX INVOICE (ORIGINAL)
+                        </t>
+                        <t t-else="">
+                            DELIVERY ORDER/TAX INVOICE (COPY)
+                        </t>
+                    </h4>
+                    <div class="row mt32">
                         <div class="col-6 text-right">
                             <p>
                                 Document No. :<br/>
@@ -113,11 +126,11 @@
                             <span t-field="line.discount"/>
                         </td>
                         <td class="text-right">
-                            <t t-set="price_unit_after_discount" t-value="(1 - line.discount) * line.price_unit"/>
-                            <span t-esc="price_unit_after_discount"/>
+                            <t t-set="price_unit_after_discount" t-value="line.price_subtotal / line.quantity"/>
+                            <span t-esc="'{0:,.2f}'.format(price_unit_after_discount)"/>
                         </td>
                         <td class="text-right">
-                            <span t-esc="float('%.2f' % line.price_subtotal)"/>
+                            <span t-esc="'{0:,.2f}'.format(line.price_subtotal)"/>
                         </td>
                     </tr>
                 </tbody>
@@ -137,7 +150,7 @@
                                     <strong>TOTAL BEFORE VAT</strong>
                                 </td>
                                 <td class="text-right horizontal_line">
-                                    <span t-esc="float('%.2f' % o.amount_untaxed)"/>
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_untaxed)"/>
                                 </td>
                             </tr>
                             <tr>
@@ -145,16 +158,15 @@
                                     <strong>VAT 7%</strong>
                                 </td>
                                 <td class="text-right horizontal_line">
-                                    <t t-set="amount_tax" t-value="o.amount_tax"/>
-                                    <span t-esc="amount_tax"/>
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_tax)"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-right">
                                     <strong>Grand Total</strong>
                                 </td>
-                                <td class="text-right horizontal_line">
-                                    <span t-esc="float('%.2f' % o.amount_total)"/>
+                                <td class="text-right horizontal_double_line">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_total)"/>
                                 </td>
                             </tr>
                         </table>
@@ -222,14 +234,22 @@
             </div>
         </div>
         <div class="footer text-right">
-            FOR CUSTOMER / สำหรับลูกค้า
+            <t t-if="i &lt; 2">
+                FOR CUSTOMER / สำหรับลูกค้า
+            </t>
+            <t t-else="">
+                FOR COMPANY / สำหรับบริษัท
+            </t>
         </div>
     </template>
 
     <template id="aal_tax_invoice_form_pdf">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="aal_account_form.aal_tax_invoice_form"/>
+                <t t-set="ncopies" t-value="4"/>
+                <t t-foreach="range(ncopies)" t-as="i">
+                    <t t-call="aal_account_form.aal_tax_invoice_form"/>
+                </t>
             </t>
         </t>
     </template>

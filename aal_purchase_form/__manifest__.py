@@ -11,6 +11,7 @@
     'depends': [
         'web',
         'purchase',
+        'aal_purchase',
     ],
     'data': [
         'data/paper_format.xml',
