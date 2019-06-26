@@ -3,9 +3,6 @@
     table tr td {
         font-size: 12px;
     }
-    .red_line {
-      border: 3px solid red;
-    }
 }
 // style quotation
 .quotation_form {
@@ -16,15 +13,16 @@
         }
     }
     .table_data {
-        border-bottom-style: solid;
-        border-left-style: solid;
-        border-right-style: solid;
         thead {
             background-color: black;
             color: white;
         }
+        tbody {
+            border-bottom: 1px solid lightgray;
+        }
     }
-    .table_managing_director {
+    .table_signature_box {
+        font-size: 12px;
         thead {
             background-color: black;
             color: white;
@@ -34,6 +32,7 @@
         }
     }
     .table_customer {
+        font-size: 12px;
         thead {
             background-color: red;
             color: white;
@@ -42,5 +41,10 @@
             background-color: silver;
         }
     }
-
+    .horizontal_line {
+        border-bottom: 1px solid black;
+    }
+    .horizontal_double_line {
+        border-bottom: double;
+    }
 }

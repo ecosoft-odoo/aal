@@ -9,12 +9,21 @@
                     <table class="mt16">
                         <tr>
                             <td colspan="2">
-                                25 Soi Phraya Phiren, Chuaploeng Road, Sathon, Bangkok 10120 Thailand
+                                <span t-field="o.company_id.street"/><br/>
+                                <span t-field="o.company_id.street2"/>
+                                <span t-field="o.company_id.city"/>
+                                <span t-field="o.company_id.state_id.name"/>
+                                <span t-field="o.company_id.country_id.name"/>
+                                <span t-field="o.company_id.zip"/>
                             </td>
                         </tr>
                         <tr>
-                            <td>T. +662 240 1331-2</td>
+                            <td>T. <span t-field="o.company_id.phone"/></td>
                             <td>F. +662 249 4283</td>
+                        </tr>
+                        <tr>
+                            <td>TAX ID NO.: <span t-field="o.company_id.vat"/></td>
+                            <td>Branch: <span t-field="o.company_id.partner_id.branch"/></td>
                         </tr>
                     </table>
                 </div>
@@ -36,7 +45,6 @@
                     </div>
                 </div>
             </div>
-            <hr class="red_line"/>
         </div>
         <div class="article purchase_order_form">
             <div class="row">
@@ -46,7 +54,7 @@
                             <b>DELIVERY METHOD</b>
                         </div>
                         <div class="col-6 content">
-                            <span/>
+                            Please see in remarks
                         </div>
                     </div>
                 </div>
@@ -59,7 +67,9 @@
                         <div class="col-4 topic">
                             <b>CURRENCY</b>
                         </div>
-                        <div class="col-2 content"/>
+                        <div class="col-2 content">
+                            <span t-field="o.currency_id"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,7 +149,7 @@
                             </tr>
                             <tr>
                                 <td>E-mail:</td>
-                                <td><span t-field="o.partner_id.email"/></td>
+                                <td><span t-field="o.company_id.email"/></td>
                             </tr>
                             <tr>
                                 <td>Attn:</td>
@@ -150,38 +160,38 @@
                 </div>
             </div>
 
-            <table class="table table-borderless table_data mt16">
-                <thead>
-                    <tr class="text-center">
-                        <th>MODEL NUMBER - DESCRIPTION</th>
-                        <th>QUANTITY</th>
-                        <th>UOM</th>
-                        <th>Unit Price</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr t-foreach="o.order_line" t-as="line">
-                        <td>
-                            <span t-field="line.name"/>
-                        </td>
-                        <td class="text-center">
-                            <span t-field="line.product_qty"/>
-                        </td>
-                        <td class="text-center">
-                            <span t-field="line.product_uom"/>
-                        </td>
-                        <td class="text-right">
-                            <span t-field="line.price_unit" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
-                        </td>
-                        <td class="text-right">
-                            <span t-field="line.price_subtotal" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
             <div class="clearfix">
+                <table class="table table_data mt16">
+                    <thead>
+                        <tr class="text-center">
+                            <th>MODEL NUMBER - DESCRIPTION</th>
+                            <th>QUANTITY</th>
+                            <th>UOM</th>
+                            <th>Unit Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.order_line" t-as="line">
+                            <td>
+                                <span t-field="line.name"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="line.product_qty"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="line.product_uom"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.price_unit"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="'{0:,.2f}'.format(line.price_subtotal)"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <div class="row">
                     <div class="col-6">
                     </div>
@@ -191,31 +201,30 @@
                                 <td class="text-right">
                                     <strong>TOTAL BEFORE VAT</strong>
                                 </td>
-                                <td class="text-right">
-                                    <span t-field="o.amount_untaxed" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                <td class="text-right horizontal_line">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_untaxed)"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-right">
-                                    <strong>VAT</strong>
+                                    <strong>VAT 7%</strong>
                                 </td>
-                                <td class="text-right">
-                                    <t t-set="amount_tax" t-value="o.amount_tax"/>
-                                    <span t-esc="amount_tax" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                <td class="text-right horizontal_line">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_tax)"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-right">
                                     <strong>Grand Total</strong>
                                 </td>
-                                <td class="text-right">
-                                    <span t-field="o.amount_total" t-options='{"widget": "monetary"}'/>
+                                <td class="text-right horizontal_double_line">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_total)"/>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div class="row mt8">
+                <div class="row mt16">
                     <div class="col-6">
                         <table class="table table-sm table_company_data">
                             <thead>
