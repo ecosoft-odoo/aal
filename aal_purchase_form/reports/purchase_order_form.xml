@@ -253,7 +253,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="mt64 text-right">(............................................................................................)</p>
+                        <p class="text-center mt64">( <span class="horizontal_dot_line" t-field="o.approver_id"/> )</p>
                     </div>
                 </div>
             </div>
