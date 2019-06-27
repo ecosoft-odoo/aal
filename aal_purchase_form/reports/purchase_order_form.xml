@@ -22,8 +22,7 @@
                             <td>F. +662 249 4283</td>
                         </tr>
                         <tr>
-                            <td>TAX ID NO.: <span t-field="o.company_id.vat"/></td>
-                            <td>Branch: <span t-field="o.company_id.partner_id.branch"/></td>
+                            <td colspan="2">TAX ID NO.: <span t-field="o.company_id.vat"/> / Branch: Head Office</td>
                         </tr>
                     </table>
                 </div>
@@ -46,122 +45,125 @@
                 </div>
             </div>
         </div>
+
         <div class="article purchase_order_form">
-            <div class="row">
-                <div class="col-6">
-                    <div class="row table" style="margin-left: 0px;">
-                        <div class="col-6 topic">
-                            <b>DELIVERY METHOD</b>
+            <div class="table_company">
+                <div class="row mt4">
+                    <div class="col-6">
+                        <div class="row table" style="margin-left: 0px;">
+                            <div class="col-6 topic">
+                                <b>DELIVERY METHOD</b>
+                            </div>
+                            <div class="col-6 content">
+                                Please see in remarks
+                            </div>
                         </div>
-                        <div class="col-6 content">
-                            Please see in remarks
+                    </div>
+                    <div class="col-6">
+                        <div class="row table" style="margin-left: 0px;">
+                            <div class="col-4 topic">
+                                <b>INCOTERM</b>
+                            </div>
+                            <div class="col-2 content"/>
+                            <div class="col-4 topic">
+                                <b>CURRENCY</b>
+                            </div>
+                            <div class="col-2 content">
+                                <span t-field="o.currency_id"/>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="row table" style="margin-left: 0px;">
-                        <div class="col-4 topic">
-                            <b>INCOTERM</b>
-                        </div>
-                        <div class="col-2 content"/>
-                        <div class="col-4 topic">
-                            <b>CURRENCY</b>
-                        </div>
-                        <div class="col-2 content">
-                            <span t-field="o.currency_id"/>
-                        </div>
+                <div class="row mt8 mb4">
+                    <div class="col-6">
+                        <table class="table table-sm table-borderless table_company_data">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">VENDOR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Name:</td>
+                                    <td><span t-field="o.partner_id"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Address:</td>
+                                    <td>
+                                        <span t-field="o.partner_id.street"/>
+                                        <span t-field="o.partner_id.street2"/>
+                                        <span t-field="o.partner_id.city"/>
+                                        <span t-field="o.partner_id.state_id.name"/>
+                                        <span t-field="o.partner_id.country_id.name"/>
+                                        <span t-field="o.partner_id.zip"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tel:</td>
+                                    <td><span t-field="o.partner_id.phone"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Fax:</td>
+                                    <td><span t-field="o.partner_id.fax"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Attn:</td>
+                                    <td><span t-field="o.partner_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td><span t-field="o.partner_id.email"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
-            <div class="row mt8">
-                <div class="col-6">
-                    <table class="table table-sm table-borderless table_company_data">
-                        <thead>
-                            <tr>
-                                <th colspan="2">VENDOR</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Name:</td>
-                                <td><span t-field="o.partner_id"/></td>
-                            </tr>
-                            <tr>
-                                <td>Address:</td>
-                                <td>
-                                    <span t-field="o.partner_id.street"/>
-                                    <span t-field="o.partner_id.street2"/>
-                                    <span t-field="o.partner_id.city"/>
-                                    <span t-field="o.partner_id.state_id.name"/>
-                                    <span t-field="o.partner_id.country_id.name"/>
-                                    <span t-field="o.partner_id.zip"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tel:</td>
-                                <td><span t-field="o.partner_id.phone"/></td>
-                            </tr>
-                            <tr>
-                                <td>Fax:</td>
-                                <td><span t-field="o.partner_id.fax"/></td>
-                            </tr>
-                            <tr>
-                                <td>E-mail:</td>
-                                <td><span t-field="o.partner_id.email"/></td>
-                            </tr>
-                            <tr>
-                                <td>Attn:</td>
-                                <td><span t-field="o.partner_id.name"/></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-6">
-                    <table class="table table-sm table-borderless table_company_data">
-                        <thead>
-                            <tr>
-                                <th colspan="2">SHIP TO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Name:</td>
-                                <td><span t-field="o.company_id.name"/></td>
-                            </tr>
-                            <tr>
-                                <td>Address:</td>
-                                <td>
-                                    <span t-field="o.company_id.street"/>
-                                    <span t-field="o.company_id.street2"/>
-                                    <span t-field="o.company_id.city"/>
-                                    <span t-field="o.company_id.state_id.name"/>
-                                    <span t-field="o.company_id.country_id.name"/>
-                                    <span t-field="o.company_id.zip"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tel:</td>
-                                <td><span t-field="o.company_id.phone"/></td>
-                            </tr>
-                            <tr>
-                                <td>Fax:</td>
-                                <td>+662 249 4283</td>
-                            </tr>
-                            <tr>
-                                <td>E-mail:</td>
-                                <td><span t-field="o.company_id.email"/></td>
-                            </tr>
-                            <tr>
-                                <td>Attn:</td>
-                                <td>Mr.Nat Yisunsri</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="col-6">
+                        <table class="table table-sm table-borderless table_company_data">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">SHIP TO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Name:</td>
+                                    <td><span t-field="o.company_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Address:</td>
+                                    <td>
+                                        <span t-field="o.company_id.street"/>
+                                        <span t-field="o.company_id.street2"/>
+                                        <span t-field="o.company_id.city"/>
+                                        <span t-field="o.company_id.state_id.name"/>
+                                        <span t-field="o.company_id.country_id.name"/>
+                                        <span t-field="o.company_id.zip"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tel:</td>
+                                    <td><span t-field="o.company_id.phone"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Fax:</td>
+                                    <td>+662 249 4283</td>
+                                </tr>                                
+                                <tr>
+                                    <td>Attn:</td>
+                                    <td>Mr.Nat Yisunsri</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td>nat@autoaccess.asia</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <div class="clearfix">
-                <table class="table table_data mt16">
+                <table class="table table_data mt8">
                     <thead>
                         <tr class="text-center">
                             <th>MODEL NUMBER - DESCRIPTION</th>
@@ -201,7 +203,7 @@
                                 <td class="text-right">
                                     <strong>TOTAL BEFORE VAT</strong>
                                 </td>
-                                <td class="text-right horizontal_line">
+                                <td class="text-right">
                                     <span t-esc="'{0:,.2f}'.format(o.amount_untaxed)"/>
                                 </td>
                             </tr>
@@ -224,37 +226,51 @@
                         </table>
                     </div>
                 </div>
-                <div class="row mt16">
-                    <div class="col-6">
-                        <table class="table table-sm table_company_data">
-                            <thead>
-                                <th>***Note / Instruction***</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <t t-if="o.notes">
-                                        <td><span t-field="o.notes"/></td>
-                                    </t>
-                                    <t t-if="not o.notes">
-                                        <td><br/><br/><br/></td>
-                                    </t>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-6">
-                        <table class="table table-sm table_approve">
-                            <thead>
-                                <th>APPROVED BY</th>
-                            </thead>
-                            <tbody>
-                                <tr>
+            </div>
+        </div>
+
+        <div class="footer table">
+            <div class="row mb8">
+                <div class="col-6">
+                    <table class="table table-sm table_note">
+                        <thead>
+                            <th>*** Note / Instruction ***</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <t t-if="o.notes">
+                                    <td><span t-field="o.notes"/></td>
+                                </t>
+                                <t t-if="not o.notes">
                                     <td><br/><br/><br/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="text-center mt64">( <span class="horizontal_dot_line" t-field="o.approver_id"/> )</p>
-                    </div>
+                                </t>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-3">
+                    <table class="table table-sm table_approve">
+                        <thead>
+                            <th>APPROVED BY VENDOR</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><br/><br/><br/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-3">
+                    <table class="table table-sm table_approve">
+                        <thead>
+                            <th>APPROVED BY</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center"><br/><br/><span t-field="o.approver_id"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -22,8 +22,7 @@
                             <td>F. +662 249 4283</td>
                         </tr>
                         <tr>
-                            <td>TAX ID NO.: <span t-field="o.company_id.vat"/></td>
-                            <td>Branch: <span t-field="o.company_id.partner_id.branch"/></td>
+                            <td colspan="2">TAX ID NO.: <span t-field="o.company_id.vat"/> / Branch: Head Office</td>
                         </tr>
                     </table>
                 </div>
@@ -37,7 +36,7 @@
                         </t>
                     </h4>
                     <div class="row mt32">
-                        <div class="col-6 text-right">
+                        <div class="col-4 text-right">
                             <p>
                                 Document No. :<br/>
                                 Order No. :<br/>
@@ -45,9 +44,9 @@
                                 Page :
                             </p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-8">
+                            <span t-field="o.number"/><br/>
                             <span t-field="o.origin"/><br/>
-                            <span/><br/>
                             <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/>
                             <span class="page"/> / <span class="topage"/>
                         </div>
@@ -56,47 +55,50 @@
             </div>
         </div>
         <div class="article tax_invoice_form">
-            <table class="table table-sm table-borderless table_company_data">
-                <thead>
-                    <tr class="text-center">
-                        <th>CUSTOMER DETAILS</th>
-                    </tr>
-                </thead>
-            </table>
-            <div class="row">
-                <div class="col-7">
-                    <div class="row">
-                        <div class="col-3">
-                            NAME :<br/>
-                            TAX ID NO. :<br/>
-                            ADDRESS :
-                        </div>
-                        <div class="col-9">
-                            <span t-field="o.partner_id.name"/><br/>
-                            <span t-field="o.partner_id.vat"/><br/>
-                            <span t-field="o.partner_id.street"/>
-                            <span t-field="o.partner_id.street2"/>
-                            <span t-field="o.partner_id.city"/>
-                            <span t-field="o.partner_id.state_id.name"/>
-                            <span t-field="o.partner_id.country_id.name"/>
-                            <span t-field="o.partner_id.zip"/>
+            <div class="table_company">
+                <table class="table table-sm table-borderless table_company_data mt4">
+                    <thead>
+                        <tr class="text-center">
+                            <th>CUSTOMER DETAILS</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-3">
+                                NAME :<br/>
+                                TAX ID NO. :<br/>
+                                ADDRESS :
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.partner_id.name"/><br/>
+                                <span t-field="o.partner_id.vat"/> / <span t-field="o.partner_id.branch"/><br/>
+                                <span t-field="o.partner_id.street"/>
+                                <span t-field="o.partner_id.street2"/>
+                                <span t-field="o.partner_id.city"/>
+                                <span t-field="o.partner_id.state_id.name"/>
+                                <span t-field="o.partner_id.country_id.name"/>
+                                <span t-field="o.partner_id.zip"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-5">
-                    <div class="row">
-                        <div class="col-3">
-                            PO.NO. :
-                            TERM :
-                        </div>
-                        <div class="col-9">
-                            <span t-field="o.reference"/>
-                            <span t-field="o.payment_term_id"/>
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-3">
+                                PO.NO. :
+                                TERM :
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.name"/><br/>
+                                <span t-field="o.payment_term_id"/>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <table class="table table-sm table-borderless table_data mt16">
+
+            <table class="table table-sm table-borderless table_data mt8">
                 <thead>
                     <tr class="text-center" valign="text-middle">
                         <th>Model No.</th>
@@ -149,7 +151,7 @@
                                 <td class="text-right">
                                     <strong>TOTAL BEFORE VAT</strong>
                                 </td>
-                                <td class="text-right horizontal_line">
+                                <td class="text-right">
                                     <span t-esc="'{0:,.2f}'.format(o.amount_untaxed)"/>
                                 </td>
                             </tr>
@@ -172,74 +174,58 @@
                         </table>
                     </div>
                 </div>
-                <div class="row mt8">
-                    <div class="col-4">
-                        <table class="table table-sm table_signature">
-                            <thead>
-                                <th>Received by:</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><br/><br/><br/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="row">
-                            <div class="col-3">
-                                Date :
-                            </div>
-                            <div class="col-9 horizontal_line">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <table class="table table-sm table_signature">
-                            <thead>
-                                <th>Delivered by:</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><br/><br/><br/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="row">
-                            <div class="col-3">
-                                Date :
-                            </div>
-                            <div class="col-9 horizontal_line">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <table class="table table-sm table_signature">
-                            <thead>
-                                <th>Authorised Signature:</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><br/><br/><br/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="row">
-                            <div class="col-3">
-                                Date :
-                            </div>
-                            <div class="col-9 horizontal_line">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-        <div class="footer text-right">
-            <t t-if="i &lt; 2">
-                FOR CUSTOMER / สำหรับลูกค้า
-            </t>
-            <t t-else="">
-                FOR COMPANY / สำหรับบริษัท
-            </t>
+        <div class="footer table">
+            <div class="row mt8">
+                <div class="col-4">
+                    <table class="table table-sm table_signature">
+                        <thead>
+                            <th>Received by:</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><br/><br/>Date :</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-4">
+                    <table class="table table-sm table_signature">
+                        <thead>
+                            <th>Delivered by:</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><br/><br/>Date :</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-4">
+                    <table class="table table-sm table_signature">
+                        <thead>
+                            <th>Authorised Signature:</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><br/><br/>Date :</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="text-right mt16" style="font-size: 14px;">
+                <t t-if="i == 1">
+                    FOR CUSTOMER / สำหรับลูกค้า
+                </t>
+                <t t-elif="i &gt; 1">
+                    FOR COMPANY / สำหรับบริษัท
+                </t>
+                <t t-else="">
+                    .
+                </t>
+            </p>
         </div>
     </template>
 
