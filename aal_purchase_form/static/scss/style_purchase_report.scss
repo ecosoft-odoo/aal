@@ -3,12 +3,38 @@
     table tr td {
         font-size: 12px;
     }
-    .red_line {
-      border: 3px solid red;
+}
+
+// style footer
+.footer {
+    border-bottom: 6px solid red;
+    .table_note {
+        thead {
+            background-color: black;
+            color: white;
+        }
+        tbody {
+            background-color: silver;
+        }
+    }
+    .table_approve {
+        thead {
+            background-color: red;
+            color: white;
+        }
+        tbody {
+            background-color: silver;
+        }
     }
 }
+
 // style purchase order
 .purchase_order_form {
+    // style body
+    .table_company {
+        border-top: 6px solid red;
+        border-bottom: 6px solid red;
+    }
     .topic {
         background-color: black;
         color: white;
@@ -32,15 +58,6 @@
         }
         tbody {
             border-bottom: 1px solid lightgray;
-        }
-    }
-    .table_approve {
-        thead {
-            background-color: red;
-            color: white;
-        }
-        tbody {
-            background-color: silver;
         }
     }
     .horizontal_line {

@@ -22,13 +22,12 @@
                             <td>F. +662 249 4283</td>
                         </tr>
                         <tr>
-                            <td>TAX ID NO.: <span t-field="o.company_id.vat"/></td>
-                            <td>Branch: <span t-field="o.company_id.partner_id.branch"/></td>
+                            <td colspan="2">TAX ID NO.: <span t-field="o.company_id.vat"/> / Branch: Head Office</td>
                         </tr>
                     </table>
                 </div>
                 <div class="col-7">
-                        <h2 class="text-right">QUOTATION</h2><br/>
+                    <h2 class="text-right">QUOTATION</h2><br/>
                     <div class="row">
                         <div class="col-9 text-right">
                             <p>
@@ -46,64 +45,68 @@
                 </div>
             </div>
         </div>
+
         <div class="article quotation_form">
-            <table class="table table-sm table-borderless table_company_data">
-                <thead>
-                    <tr class="text-center">
-                        <th>CUSTOMER DETAILS</th>
-                    </tr>
-                </thead>
-            </table>
-            <div class="row">
-                <div class="col-8">
-                    <table class="table table-sm table-borderless table_company_data">
-                        <tbody>
-                            <tr>
-                                <td>ATTN:</td>
-                                <td><span t-field="o.partner_id.name"/></td>
-                            </tr>
-                            <tr>
-                                <td>NAME:</td>
-                                <td><span t-field="o.partner_id.name"/></td>
-                            </tr>
-                            <tr>
-                                <td>Address:</td>
-                                <td>
-                                    <span t-field="o.partner_id.street"/>
-                                    <span t-field="o.partner_id.street2"/>
-                                    <span t-field="o.partner_id.city"/>
-                                    <span t-field="o.partner_id.state_id.name"/>
-                                    <span t-field="o.partner_id.country_id.name"/>
-                                    <span t-field="o.partner_id.zip"/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-4">
-                    <table class="table table-sm table-borderless table_company_data">
-                        <tbody>
-                            <tr>
-                                <td>Tel:</td>
-                                <td><span t-field="o.partner_id.phone"/></td>
-                            </tr>
-                            <tr>
-                                <td>Fax:</td>
-                                <td><span t-field="o.partner_id.fax"/></td>
-                            </tr>
-                            <tr>
-                                <td>E-mail:</td>
-                                <td><span t-field="o.partner_id.email"/></td>
-                            </tr>
-                            <tr>
-                                <td>Reference:</td>
-                                <td><span t-field="o.client_order_ref"/></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="table_company">
+                <table class="table table-sm table-borderless table_company_data mt4">
+                    <thead>
+                        <tr class="text-center">
+                            <th>CUSTOMER DETAILS</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="row">
+                    <div class="col-8">
+                        <table class="table table-sm table-borderless table_company_data">
+                            <tbody>
+                                <tr>
+                                    <td>ATTN:</td>
+                                    <td><span t-field="o.partner_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td>COMPANY:</td>
+                                    <td><span t-field="o.partner_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Address:</td>
+                                    <td>
+                                        <span t-field="o.partner_id.street"/>
+                                        <span t-field="o.partner_id.street2"/>
+                                        <span t-field="o.partner_id.city"/>
+                                        <span t-field="o.partner_id.state_id.name"/>
+                                        <span t-field="o.partner_id.country_id.name"/>
+                                        <span t-field="o.partner_id.zip"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-4">
+                        <table class="table table-sm table-borderless table_company_data">
+                            <tbody>
+                                <tr>
+                                    <td>Tel:</td>
+                                    <td><span t-field="o.partner_id.phone"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Fax:</td>
+                                    <td><span t-field="o.partner_id.fax"/></td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td><span t-field="o.partner_id.email"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Reference:</td>
+                                    <td><span t-field="o.client_order_ref"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <table class="table table-sm table-borderless table_data mt16">
+
+            <table class="table table-sm table-borderless table_data mt8">
                 <thead>
                     <tr class="text-center" valign="text-middle">
                         <th>Model No.</th>
@@ -154,7 +157,7 @@
                                 <td class="text-right">
                                     <strong>TOTAL BEFORE VAT</strong>
                                 </td>
-                                <td class="text-right horizontal_line">
+                                <td class="text-right">
                                     <span t-esc="'{0:,.2f}'.format(o.amount_untaxed)"/>
                                 </td>
                             </tr>
@@ -177,68 +180,52 @@
                         </table>
                     </div>
                 </div>
-                <div class="row mt16">
-                    <div class="col-4">
-                        <table class="table table-sm table_signature_box">
-                            <thead>
-                                <th>เจ้าหน้าที่ฝ่ายขาย/SALES EXECUTIVE</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><br/><br/><br/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-4">
-                        <table class="table table-sm table_signature_box">
-                            <thead>
-                                <th>ผู้จัดการฝ่ายขาย/SALES MANAGER</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><br/><br/><br/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-4">
-                        <table class="table table-sm table_signature_box">
-                            <thead>
-                                <th>กรรมการผู้จัดการ/MANAGING DIRECTOR</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><br/><br/><br/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="text-center" style="font-size: 11px;">(วรศักดิ์ เกษมธนกุล/VORASAK KASEMTANAKUL)</p>
-                    </div>
+            </div>
+        </div>
+
+        <div class="footer table">
+            <div class="row">
+                <div class="col-8">
                 </div>
-                <div class="row mt16">
-                    <div class="col-8">
-                        <small>
-                            โปรดลงนามและประทับตราเพื่อยืนยันการสั่งซื้อ และกรุณาส่งกลับมายังบริษัท คอมฟอทต้า จำกัด<br/>
-                            To accept this quotation, please sign in the customer box and return via Fax or Email.<br/>
-                            <br/>
-                            Fax: +662-249-4283<br/>
-                            Email: Order@comforta.co.th
-                        </small>
-                    </div>
-                    <div class="col-4">
-                        <table class="table table-sm table_customer">
-                            <thead>
-                                <th>ผู้สั่งซื้อ/CUSTOMER</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><br/><br/><br/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="text-center">(.............................................................)</p>
-                    </div>
+                <div class="col-4">
+                    <table class="table table-sm table_signature_box">
+                        <thead>
+                            <th class="text-center">Auto Access Limited</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p class="text-center" style="font-size: 30px;">Nat Y.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="text-center">(Mr.Nat Yisunsri)<br/>General Manager</p>
+                </div>
+            </div>
+            <div class="row mb8">
+                <div class="col-8 mt32">
+                    <small>
+                        โปรดลงนามและประทับตราเพื่อยืนยันการสั่งซื้อ และกรุณาส่งกลับมายังบริษัท ออโต้แอ๊คเซส จำกัด<br/>
+                        To accept this quotation, please sign in the customer box and return via Fax or Email.<br/>
+                        <br/>
+                        Fax: +662-249-4283<br/>
+                        Email: Order@autoaccess.asia
+                    </small>
+                </div>
+                <div class="col-4">
+                    <table class="table table-sm table_customer">
+                        <thead>
+                            <th class="text-center">CUSTOMER</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><br/><br/><br/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-center">(.......................................................)</p>
                 </div>
             </div>
         </div>
