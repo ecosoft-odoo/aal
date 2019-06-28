@@ -1,12 +1,39 @@
 <odoo>
-    <report string="Delivery Order/Tax Invoice ใบส่งสินค้า/ใบกำกำกับภาษี"
-            id="aal_tax_invoice_form_pdf_report"
-            model="account.invoice"
-            name="aal_account_form.aal_tax_invoice_form_pdf"
-            file="aal_account_form.aal_tax_invoice_form_pdf"
+    <report string="Billing Note"
+            id="aal_billing_form_pdf_report"
+            model="account.billing"
+            name="aal_account_form.aal_billing_form_pdf"
+            file="aal_account_form.aal_billing_form_pdf"
             report_type="qweb-pdf"
-            print_report_name="'Tax Invoice - [%s]' % object.display_name"
-            paperformat="aal_account_form.paperformat_aal_tax_invoice"/>
+            print_report_name="'Billing Note - [%s]' % object.display_name"
+            paperformat="aal_account_form.paperformat_aal"/>
+
+    <report string="Credit Note/Tax Invoice"
+            id="aal_credit_note_tax_invoice_form_pdf_report"
+            model="account.invoice"
+            name="aal_account_form.aal_credit_note_tax_invoice_form_pdf"
+            file="aal_account_form.aal_credit_note_tax_invoice_form_pdf"
+            report_type="qweb-pdf"
+            print_report_name="'Credit Note_Tax Invoice - [%s]' % object.display_name"
+            paperformat="aal_account_form.paperformat_aal"/>
+
+    <report string="Delivery Order / ใบส่งสินค้า"
+            id="aal_delivery_order_form_pdf_report"
+            model="account.invoice"
+            name="aal_account_form.aal_delivery_order_form_pdf"
+            file="aal_account_form.aal_delivery_order_form_pdf"
+            report_type="qweb-pdf"
+            print_report_name="'Delivery Order - [%s]' % object.display_name"
+            paperformat="aal_account_form.paperformat_aal"/>
+
+    <report string="Delivery Order/Tax Invoice ใบส่งสินค้า/ใบกำกำกับภาษี"
+            id="aal_delivery_order_tax_invoice_form_pdf_report"
+            model="account.invoice"
+            name="aal_account_form.aal_delivery_order_tax_invoice_form_pdf"
+            file="aal_account_form.aal_delivery_order_tax_invoice_form_pdf"
+            report_type="qweb-pdf"
+            print_report_name="'Delivery Order_Tax Invoice - [%s]' % object.display_name"
+            paperformat="aal_account_form.paperformat_aal"/>
 
     <report string="Receipt / ใบเสร็จรับเงิน"
             id="aal_receipt_form_pdf_report"
@@ -15,5 +42,6 @@
             file="aal_account_form.aal_receipt_form_pdf"
             report_type="qweb-pdf"
             print_report_name="'Receipt - [%s]' % object.display_name"
-            paperformat="aal_account_form.paperformat_aal_tax_invoice"/>
+            paperformat="aal_account_form.paperformat_aal"/>
+
 </odoo>

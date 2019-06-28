@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-3">
                             <span t-field="o.name"/><br/>
-                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/>
+                            <span t-esc="context_timestamp(o.date_order).strftime('%d/%m/%Y')"/><br/>
                             <span class="page"/> / <span class="topage"/>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                                 <tr>
                                     <td>Fax:</td>
                                     <td>+662 249 4283</td>
-                                </tr>                                
+                                </tr>
                                 <tr>
                                     <td>Attn:</td>
                                     <td>Mr.Nat Yisunsri</td>
@@ -266,8 +266,8 @@
                             <th>APPROVED BY</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center"><br/><br/><span t-field="o.approver_id"/></td>
+                            <tr class="text-center">
+                                <td><br/><br/><span t-field="o.approver_id"/></td>
                             </tr>
                         </tbody>
                     </table>

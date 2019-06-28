@@ -1,5 +1,5 @@
 <odoo>
-    <record id="paperformat_aal_tax_invoice" model="report.paperformat">
+    <record id="paperformat_aal" model="report.paperformat">
         <field name="name">Invoice A4</field>
         <field name="default" eval="True" />
         <field name="format">A4</field>
@@ -7,7 +7,7 @@
         <field name="page_width">0</field>
         <field name="orientation">Portrait</field>
         <field name="margin_top">45</field>
-        <field name="margin_bottom">55</field>
+        <field name="margin_bottom">45</field>
         <field name="margin_left">7</field>
         <field name="margin_right">7</field>
         <field name="header_line" eval="False" />
