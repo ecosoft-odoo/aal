@@ -38,15 +38,31 @@
                     <div class="row mt32">
                         <div class="col-4 text-right">
                             <p>
-                                Document No. :<br/>
-                                Order No. :<br/>
+                                Document No. :
+                            </p>
+                        </div>
+                        <div class="col-8">
+                            <span t-field="o.number"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p>
+                                Order No. :
+                            </p>
+                        </div>
+                        <div class="col-8">
+                            <span t-field="o.origin"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p>
                                 Date :<br/>
                                 Page :
                             </p>
                         </div>
                         <div class="col-8">
-                            <span t-field="o.number"/><br/>
-                            <span t-field="o.origin"/><br/>
                             <span t-field="o.date_invoice"/><br/>
                             <span class="page"/> / <span class="topage"/>
                         </div>
@@ -67,13 +83,25 @@
                     <div class="col-7">
                         <div class="row">
                             <div class="col-3">
-                                NAME<br/>
-                                TAX ID NO.<br/>
+                                NAME
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.partner_id.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                TAX ID NO.
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.partner_id.vat"/> / <span t-field="o.partner_id.branch"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
                                 ADDRESS
                             </div>
                             <div class="col-9">
-                                <span t-field="o.partner_id.name"/><br/>
-                                <span t-field="o.partner_id.vat"/> / <span t-field="o.partner_id.branch"/><br/>
                                 <span t-field="o.partner_id.street"/>
                                 <span t-field="o.partner_id.street2"/>
                                 <span t-field="o.partner_id.city"/>
@@ -86,11 +114,17 @@
                     <div class="col-5">
                         <div class="row">
                             <div class="col-3">
-                                PO.NO.<br/>
+                                PO.NO.
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
                                 TERM
                             </div>
                             <div class="col-9">
-                                <span t-field="o.name"/><br/>
                                 <span t-field="o.payment_term_id"/>
                             </div>
                         </div>
@@ -124,7 +158,7 @@
                             <span t-field="line.discount"/>
                         </td>
                         <td class="text-right">
-                            <t t-set="price_unit_after_discount" t-value="line.price_subtotal / line.quantity"/>
+                            <t t-set="price_unit_after_discount" t-value="float('%.2f' % line.price_subtotal) / float('%.2f' % line.quantity)"/>
                             <span t-esc="'{0:,.2f}'.format(price_unit_after_discount)"/>
                         </td>
                         <td class="text-right">
@@ -136,12 +170,9 @@
 
             <div class="clearfix">
                 <div class="row">
-                    <div class="col-8 mt64">
-                        <small>
-                            RECEIVED THE ABOVE IN GOOD ORDER AND CONDITION AT PRICE SHOWN
-                        </small>
+                    <div class="col-6">
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <table class="table table-sm table-borderless">
                             <tr>
                                 <td class="text-right">
@@ -170,6 +201,7 @@
                         </table>
                     </div>
                 </div>
+                <p>RECEIVED THE ABOVE IN GOOD ORDER AND CONDITION AT PRICE SHOWN</p>
             </div>
         </div>
         <div class="footer table">

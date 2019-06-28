@@ -12,9 +12,9 @@ class PurchaseOrder(models.Model):
         states={'draft': [('readonly', False)]},
         readonly=True,
     )
-
-    # @api.multi
-    # def _add_approver(self, invoices):
-    #     values = super()._add_approver()
-    #     values['approver'] = self.approver
-    #     return values
+    attention_id = fields.Many2one(
+        string='Attention:',
+        comodel_name='res.partner',
+        domain="[('parent_id', '!=', False),"
+        "('parent_id', '=', partner_id)]",
+    )
