@@ -12,7 +12,6 @@ class AccountInvoiceLine(models.Model):
         help="Order Ref computed from sales order "
         "lines related to this invoice line",
     )
-    comment = fields.Text(readonly=False)
 
     @api.multi
     def _compute_client_order_ref(self):
