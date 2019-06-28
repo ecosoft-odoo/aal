@@ -46,8 +46,8 @@
                         </div>
                         <div class="col-8">
                             <span t-field="o.number"/><br/>
-                            <span t-field="o.origin"/><br/>
-                            <span t-esc="context_timestamp(o.date_invoice).strftime('%d/%m/%Y')"/><br/>
+                            <span t-field="o.origin"/><br/>                            
+                            <span t-field="o.date_invoice"/><br/>
                             <span class="page"/> / <span class="topage"/>
                         </div>
                     </div>
