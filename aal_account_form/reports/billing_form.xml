@@ -65,9 +65,9 @@
                     <div class="col-7">
                         <div class="row">
                             <div class="col-3">
-                                NAME :<br/>
-                                TAX ID NO. :<br/>
-                                ADDRESS :
+                                NAME<br/>
+                                TAX ID NO.<br/>
+                                ADDRESS
                             </div>
                             <div class="col-9">
                                 <span t-field="o.partner_id.name"/><br/>
@@ -84,8 +84,8 @@
                     <div class="col-5">
                         <div class="row">
                             <div class="col-3">
-                                PO.NO. :<br/>
-                                TERM :
+                                PO.NO.<br/>
+                                TERM
                             </div>
                             <div class="col-9">
                                 Please see below in description<br/>
