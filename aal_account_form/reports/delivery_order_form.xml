@@ -1,5 +1,5 @@
 <odoo>
-    <template id="aal_tax_invoice_form">
+    <template id="aal_delivery_order_form">
         <div class="header">
             <div class="row">
                 <div class="col-5">
@@ -29,10 +29,10 @@
                 <div class="col-7">
                     <h4 class="text-right">
                         <t t-if="i == 0">
-                            DELIVERY ORDER/TAX INVOICE (ORIGINAL)
+                            DELIVERY ORDER (ORIGINAL)
                         </t>
                         <t t-else="">
-                            DELIVERY ORDER/TAX INVOICE (COPY)
+                            DELIVERY ORDER (COPY)
                         </t>
                     </h4>
                     <div class="row mt32">
@@ -47,14 +47,14 @@
                         <div class="col-8">
                             <span t-field="o.number"/><br/>
                             <span t-field="o.origin"/><br/>
-                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/>
+                            <span t-esc="context_timestamp(o.date_invoice).strftime('%d/%m/%Y')"/><br/>
                             <span class="page"/> / <span class="topage"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="article tax_invoice_form">
+        <div class="article delivery_order_form">
             <div class="table_company">
                 <table class="table table-sm table-borderless table_company_data mt4">
                     <thead>
@@ -72,21 +72,21 @@
                                 ADDRESS :
                             </div>
                             <div class="col-9">
-                                <span t-field="o.partner_id.name"/><br/>
-                                <span t-field="o.partner_id.vat"/> / <span t-field="o.partner_id.branch"/><br/>
-                                <span t-field="o.partner_id.street"/>
-                                <span t-field="o.partner_id.street2"/>
-                                <span t-field="o.partner_id.city"/>
-                                <span t-field="o.partner_id.state_id.name"/>
-                                <span t-field="o.partner_id.country_id.name"/>
-                                <span t-field="o.partner_id.zip"/>
+                                <span t-field="o.partner_shipping_id.name"/><br/>
+                                <span t-field="o.partner_shipping_id.vat"/> / <span t-field="o.partner_id.branch"/><br/>
+                                <span t-field="o.partner_shipping_id.street"/>
+                                <span t-field="o.partner_shipping_id.street2"/>
+                                <span t-field="o.partner_shipping_id.city"/>
+                                <span t-field="o.partner_shipping_id.state_id.name"/>
+                                <span t-field="o.partner_shipping_id.country_id.name"/>
+                                <span t-field="o.partner_shipping_id.zip"/>
                             </div>
                         </div>
                     </div>
                     <div class="col-5">
                         <div class="row">
                             <div class="col-3">
-                                PO.NO. :
+                                PO.NO. :<br/>
                                 TERM :
                             </div>
                             <div class="col-9">
@@ -101,7 +101,6 @@
             <table class="table table-sm table-borderless table_data mt8">
                 <thead>
                     <tr class="text-center" valign="text-middle">
-                        <th>Model No.</th>
                         <th>Description</th>
                         <th>Quantity</th>
                         <th>Unit Price</th>
@@ -112,9 +111,6 @@
                 </thead>
                 <tbody>
                     <tr t-foreach="o.invoice_line_ids" t-as="line">
-                        <td>
-                            <span t-field="line.product_id.default_code"/>
-                        </td>
                         <td>
                             <span t-field="line.name"/>
                         </td>
@@ -140,12 +136,12 @@
 
             <div class="clearfix">
                 <div class="row">
-                    <div class="col-7 mt64">
+                    <div class="col-8 mt64">
                         <small>
                             RECEIVED THE ABOVE IN GOOD ORDER AND CONDITION AT PRICE SHOWN
                         </small>
                     </div>
-                    <div class="col-5">
+                    <div class="col-4">
                         <table class="table table-sm table-borderless">
                             <tr>
                                 <td class="text-right">
@@ -177,7 +173,7 @@
             </div>
         </div>
         <div class="footer table">
-            <div class="row mt8">
+            <div class="row">
                 <div class="col-4">
                     <table class="table table-sm table_signature">
                         <thead>
@@ -205,7 +201,7 @@
                 <div class="col-4">
                     <table class="table table-sm table_signature">
                         <thead>
-                            <th>Authorised Signature:</th>
+                            <th>Authorized Signature:</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -229,12 +225,12 @@
         </div>
     </template>
 
-    <template id="aal_tax_invoice_form_pdf">
+    <template id="aal_delivery_order_form_pdf">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-set="ncopies" t-value="4"/>
                 <t t-foreach="range(ncopies)" t-as="i">
-                    <t t-call="aal_account_form.aal_tax_invoice_form"/>
+                    <t t-call="aal_account_form.aal_delivery_order_form"/>
                 </t>
             </t>
         </t>

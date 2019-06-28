@@ -1,5 +1,5 @@
 <odoo>
-    <template id="aal_receipt_form">
+    <template id="aal_billing_form">
         <div class="header">
             <div class="row">
                 <div class="col-5">
@@ -29,10 +29,10 @@
                 <div class="col-7">
                     <h4 class="text-right">
                         <t t-if="i == 0">
-                            RECEIPT (ORIGINAL)
+                            BILLING NOTE (ORIGINAL)
                         </t>
                         <t t-else="">
-                            RECEIPT (COPY)
+                            BILLING NOTE (COPY)
                         </t>
                     </h4>
                     <div class="row mt32">
@@ -45,15 +45,14 @@
                         </div>
                         <div class="col-6">
                             <span t-field="o.name"/><br/>
-                            <span t-field="o.payment_date"/><br/>
+                            <span t-field="o.date"/><br/>
                             <span class="page"/> / <span class="topage"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="article receipt_form">
+        <div class="article billing_form">
             <div class="table_company">
                 <table class="table table-sm table-borderless table_company_data mt4">
                     <thead>
@@ -89,8 +88,7 @@
                                 TERM :
                             </div>
                             <div class="col-9">
-                                <!-- <span t-field="o.communication"/> -->
-                                <br/>
+                                Please see below in description<br/>
                                 <span t-field="o.partner_id.property_payment_term_id"/>
                             </div>
                         </div>
@@ -98,17 +96,19 @@
                 </div>
             </div>
 
-            <table class="table table-sm table-borderless table_data mt8">
+            <table class="table table-sm table-borderless table_data mt16">
                 <thead>
                     <tr class="text-center" valign="text-middle">
                         <th>NO.</th>
-                        <th>DOCUMANT NO.</th>
+                        <th>INVOICE NO.</th>
                         <th>INVOICE DATE</th>
+                        <th>DUE DATE</th>
                         <th>AMOUNT</th>
                     </tr>
                 </thead>
                 <tbody>
                     <t t-set="n" t-value="1"/>
+                    <t t-set="total_amount" t-value="0"/>
                     <t t-foreach="o.invoice_ids" t-as="line">
                         <tr class="text-center">
                             <td>
@@ -121,8 +121,12 @@
                             <td>
                                 <span t-field="line.date_invoice"/>
                             </td>
+                            <td>
+                                <span t-field="line.date_due"/>
+                            </td>
                             <td class="text-right">
-                                <span t-esc="'{0:,.2f}'.format(line.amount_total_signed)"/>
+                                <span t-esc="'{0:,.2f}'.format(line.amount_total)"/>
+                                <t t-set="total_amount" t-value="total_amount + line.amount_total"/>
                             </td>
                         </tr>
                     </t>
@@ -132,7 +136,6 @@
             <div class="clearfix">
                 <div class="row">
                     <div class="col-8">
-                        หมายเหตุ: ใบเสร็จรับเงิน จะสมบูรณ์ก็ต่อเมื่อได้รับการโอนเงินเรียบร้อยแล้ว
                     </div>
                     <div class="col-4">
                         <table class="table table-sm table-borderless">
@@ -141,7 +144,7 @@
                                     <strong>Grand Total</strong>
                                 </td>
                                 <td class="text-right horizontal_double_line">
-                                    <span t-esc="'{0:,.2f}'.format(o.amount)"/>
+                                    <span t-esc="'{0:,.2f}'.format(total_amount)"/>
                                 </td>
                             </tr>
                         </table>
@@ -155,7 +158,7 @@
                 <div class="col-4">
                     <table class="table table-sm table_signature">
                         <thead>
-                            <th>Paid by:</th>
+                            <th>Receeived by:</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -167,7 +170,7 @@
                 <div class="col-4">
                     <table class="table table-sm table_signature">
                         <thead>
-                            <th>Receeived by:</th>
+                            <th>Billing by:</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -192,12 +195,12 @@
         </div>
     </template>
 
-    <template id="aal_receipt_form_pdf">
+    <template id="aal_billing_form_pdf">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-set="ncopies" t-value="2"/>
                 <t t-foreach="range(ncopies)" t-as="i">
-                    <t t-call="aal_account_form.aal_receipt_form"/>
+                    <t t-call="aal_account_form.aal_billing_form"/>
                 </t>
             </t>
         </t>
