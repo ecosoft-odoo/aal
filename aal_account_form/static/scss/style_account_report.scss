@@ -74,6 +74,35 @@
         border-bottom: double;
     }
 }
+// style Debit Note
+.debit_note_tax_invoice_form {
+    .table_company {
+        border-top: 6px solid red;
+        border-bottom: 6px solid red;
+    }
+    .table_company_data {
+        thead {
+            background-color: black;
+            color: white;
+        }
+    }
+    .table_data {
+        font-size: 14px;
+        thead {
+            background-color: black;
+            color: white;
+        }
+        tbody tr {
+            border-bottom: 1px solid lightgray;
+        }
+    }
+    .horizontal_line {
+        border-bottom:1px solid black;
+    }
+    .horizontal_double_line {
+        border-bottom: double;
+    }
+}
 // style Delivery Order
 .delivery_order_form {
     .table_company {
@@ -117,6 +146,34 @@
     }
     .table_data {
         font-size: 14px;
+        thead {
+            background-color: black;
+            color: white;
+        }
+        tbody tr {
+            border-bottom: 1px solid lightgray;
+        }
+    }
+    .horizontal_line {
+        border-bottom:1px solid black;
+    }
+    .horizontal_double_line {
+        border-bottom: double;
+    }
+}
+// style Payment Request
+.payment_request_form {
+    .table_company {
+        border-top: 6px solid red;
+        border-bottom: 6px solid red;
+    }
+    .table_company_data {
+        thead {
+            background-color: black;
+            color: white;
+        }
+    }
+    .table_data {
         thead {
             background-color: black;
             color: white;

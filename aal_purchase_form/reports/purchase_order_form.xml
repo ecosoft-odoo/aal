@@ -108,7 +108,7 @@
                                 </tr>
                                 <tr>
                                     <td>Attn:</td>
-                                    <td><span t-field="o.partner_id.name"/></td>
+                                    <td><span t-field="o.attention_id.name"/></td>
                                 </tr>
                                 <tr>
                                     <td>E-mail:</td>

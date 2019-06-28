@@ -8,15 +8,19 @@
     'depends': [
         'web',
         'account',
+        'sale_stock',
     ],
     'data': [
         'data/paper_format.xml',
         'data/report_data.xml',
         'reports/account_style.xml',
         'reports/billing_form.xml',
-        'reports/receipt_form.xml',
+        'reports/credit_note_tax_invoice_form.xml',
+        'reports/debit_note_tax_invoice_form.xml',
         'reports/delivery_order_form.xml',
         'reports/delivery_order_tax_invoice_form.xml',
+        'reports/payment_request_form.xml',
+        'reports/receipt_form.xml',
     ],
     'installable': True,
 }

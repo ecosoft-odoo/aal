@@ -61,7 +61,7 @@
                             <tbody>
                                 <tr>
                                     <td>ATTN:</td>
-                                    <td><span t-field="o.partner_id.name"/></td>
+                                    <td><span t-field="o.attention_id.name"/></td>
                                 </tr>
                                 <tr>
                                     <td>COMPANY:</td>

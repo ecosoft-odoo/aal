@@ -37,14 +37,20 @@
                     </h4>
                     <div class="row mt32">
                         <div class="col-6 text-right">
+                            <p>Document No. :</p>
+                        </div>
+                        <div class="col-6">
+                            <span t-field="o.name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-right">
                             <p>
-                                Document No. :<br/>
                                 Date :<br/>
                                 Page :
                             </p>
                         </div>
                         <div class="col-6">
-                            <span t-field="o.name"/><br/>
                             <span t-field="o.payment_date"/><br/>
                             <span class="page"/> / <span class="topage"/>
                         </div>
@@ -66,13 +72,17 @@
                     <div class="col-7">
                         <div class="row">
                             <div class="col-3">
-                                NAME:<br/>
-                                TAX ID NO.<br/>
+                                NAME
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.partner_id.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
                                 ADDRESS
                             </div>
                             <div class="col-9">
-                                <span t-field="o.partner_id.name"/><br/>
-                                <span t-field="o.partner_id.vat"/> / <span t-field="o.partner_id.branch"/><br/>
                                 <span t-field="o.partner_id.street"/>
                                 <span t-field="o.partner_id.street2"/>
                                 <span t-field="o.partner_id.city"/>
@@ -85,12 +95,17 @@
                     <div class="col-5">
                         <div class="row">
                             <div class="col-3">
-                                PO.NO.<br/>
-                                TERM
+                                PO.NO.
                             </div>
                             <div class="col-9">
                                 <!-- <span t-field="o.communication"/> -->
-                                <br/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                TERM
+                            </div>
+                            <div class="col-9">
                                 <span t-field="o.partner_id.property_payment_term_id"/>
                             </div>
                         </div>
@@ -102,7 +117,7 @@
                 <thead>
                     <tr class="text-center" valign="text-middle">
                         <th>NO.</th>
-                        <th>DOCUMANT NO.</th>
+                        <th>DOCUMENT NO.</th>
                         <th>INVOICE DATE</th>
                         <th>AMOUNT</th>
                     </tr>

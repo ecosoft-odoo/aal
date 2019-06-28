@@ -1,5 +1,5 @@
 <odoo>
-    <template id="aal_credit_note_tax_invoice_form">
+    <template id="aal_debit_note_tax_invoice_form">
         <div class="header">
             <div class="row">
                 <div class="col-5">
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div class="article credit_note_tax_invoice_form">
+        <div class="article debit_note_tax_invoice_form">
             <div class="table_company">
                 <table class="table table-sm table-borderless table_company_data mt4">
                     <thead>
@@ -174,7 +174,7 @@
                                         <strong>VALUE OF GOODS OR SERVICES IS CORRECT</strong>
                                 </td>
                                 <td class="text-right">
-                                    <t t-set="value_correct" t-value="float('%.2f' % o.refund_invoice_id.amount_untaxed) - float('%.2f' % o.amount_untaxed)"/>
+                                    <t t-set="value_correct" t-value="float('%.2f' % o.amount_untaxed) - float('%.2f' % o.refund_invoice_id.amount_untaxed)"/>
                                     <span t-esc="'{0:,.2f}'.format(value_correct)"/>
                                 </td>
                             </tr>
@@ -261,12 +261,12 @@
         </div>
     </template>
 
-    <template id="aal_credit_note_tax_invoice_form_pdf">
+    <template id="aal_debit_note_tax_invoice_form_pdf">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-set="ncopies" t-value="4"/>
                 <t t-foreach="range(ncopies)" t-as="i">
-                    <t t-call="aal_account_form.aal_credit_note_tax_invoice_form"/>
+                    <t t-call="aal_account_form.aal_debit_note_tax_invoice_form"/>
                 </t>
             </t>
         </t>

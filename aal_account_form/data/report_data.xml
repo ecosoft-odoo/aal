@@ -17,6 +17,15 @@
             print_report_name="'Credit Note_Tax Invoice - [%s]' % object.display_name"
             paperformat="aal_account_form.paperformat_aal"/>
 
+    <report string="Debit Note/Tax Invoice"
+            id="aal_debit_note_tax_invoice_form_pdf_report"
+            model="account.invoice"
+            name="aal_account_form.aal_debit_note_tax_invoice_form_pdf"
+            file="aal_account_form.aal_debit_note_tax_invoice_form_pdf"
+            report_type="qweb-pdf"
+            print_report_name="'Debit Note_Tax Invoice - [%s]' % object.display_name"
+            paperformat="aal_account_form.paperformat_aal"/>
+
     <report string="Delivery Order / ใบส่งสินค้า"
             id="aal_delivery_order_form_pdf_report"
             model="account.invoice"
@@ -33,6 +42,15 @@
             file="aal_account_form.aal_delivery_order_tax_invoice_form_pdf"
             report_type="qweb-pdf"
             print_report_name="'Delivery Order_Tax Invoice - [%s]' % object.display_name"
+            paperformat="aal_account_form.paperformat_aal"/>
+
+    <report string="Payment Request"
+            id="aal_payment_request_form_pdf_report"
+            model="account.billing"
+            name="aal_account_form.aal_payment_request_form_pdf"
+            file="aal_account_form.aal_payment_request_form_pdf"
+            report_type="qweb-pdf"
+            print_report_name="'Payment Request - [%s]' % object.display_name"
             paperformat="aal_account_form.paperformat_aal"/>
 
     <report string="Receipt / ใบเสร็จรับเงิน"
