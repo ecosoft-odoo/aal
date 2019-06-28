@@ -17,5 +17,5 @@ class AccountInvoiceLine(models.Model):
     def _compute_client_order_ref(self):
         for rec in self:
             sales = rec.sale_line_ids.mapped('order_id')
-            refs = sales.filtered('client_order_ref').mapped('client_order_ref').
+            refs = sales.filtered('client_order_ref').mapped('client_order_ref')
             rec.client_order_ref = ', '.join(refs)
