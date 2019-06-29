@@ -1,7 +1,7 @@
 #!/bin/bash
 pg_container="postgres-11.2"
 pg_user="odoo"
-db="AAL_TEST"
+db="AAL"
 psql="docker exec -it $pg_container psql -U $pg_user $db"
 
 # Inventory
@@ -11,6 +11,7 @@ $psql -c "delete from stock_move"
 $psql -c "delete from stock_picking"
 $psql -c "delete from stock_inventory_line"
 $psql -c "delete from stock_inventory"
+$psql -c "delete from stock_quant"
 
 # Sales
 $psql -c "delete from sale_order_option"
@@ -35,3 +36,6 @@ $psql -c "delete from account_invoice"
 $psql -c "delete from account_move"
 $psql -c "delete from account_billing"
 $psql -c "delete from account_payment"
+
+# Product
+$psql -c "delete from product_supplierinfo"
