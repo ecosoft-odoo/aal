@@ -1,8 +1,8 @@
 {
-    'name': 'AAL Purchase',
-    'summary': 'Modify field in purchase module',
+    'name': 'AAL Sale',
+    'summary': 'Modify field in sale module',
     'version': '12.0.1.0.0',
-    'category': 'Purchases',
+    'category': 'Sale',
     'website': 'https://github.com/ecosoft-odoo/aal',
     'author': 'Ecosoft',
     'license': 'AGPL-3',
