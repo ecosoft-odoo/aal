@@ -5,13 +5,6 @@ from openerp import models, api
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
-    # @api.multi
-    # def amount_text(self, amount):
-    #     try:
-    #         return num2words(amount, to='currency', lang='th')
-    #     except NotImplementedError:
-    #         return num2words(amount, to='currency', lang='en')
-
     @api.multi
     def remove_menu_print(self, res, reports):
         # Remove reports menu
@@ -28,12 +21,11 @@ class PurchaseOrder(models.Model):
                         toolbar=False, submenu=False):
         hide_reports_purchase = [
             'purchase.action_report_purchase_order',
-            # 'purchase.report_purchase_quotation',
+            'purchase.report_purchase_quotation',
         ]
         res = super(PurchaseOrder, self).fields_view_get(
             view_id=view_id, view_type=view_type,
             toolbar=toolbar, submenu=submenu)
         if res and view_type in ['tree', 'form']:
-            # del menu report customer and vendor
             self.remove_menu_print(res, hide_reports_purchase)
         return res

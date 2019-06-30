@@ -1,5 +1,5 @@
 <odoo>
-    <template id="aal_delivery_order_tax_invoice_form">
+    <template id="aal_delivery_order_tax_invoice_B_form">
         <div class="header">
             <div class="row">
                 <div class="col-5">
@@ -136,6 +136,7 @@
                 <thead>
                     <tr class="text-center" valign="text-middle">
                         <th>Description</th>
+                        <th>Order Ref.</th>
                         <th>Quantity</th>
                         <th>Unit Price</th>
                         <th>Discount<br/>(%)</th>
@@ -147,6 +148,9 @@
                     <tr t-foreach="o.invoice_line_ids" t-as="line">
                         <td>
                             <span t-field="line.name"/>
+                        </td>
+                        <td class="text-center">
+                            <span t-field="line.client_order_ref"/>
                         </td>
                         <td class="text-center">
                             <span t-field="line.quantity"/>
@@ -257,12 +261,12 @@
         </div>
     </template>
 
-    <template id="aal_delivery_order_tax_invoice_form_pdf">
+    <template id="aal_delivery_order_tax_invoice_B_form_pdf">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-set="ncopies" t-value="4"/>
                 <t t-foreach="range(ncopies)" t-as="i">
-                    <t t-call="aal_account_form.aal_delivery_order_tax_invoice_form"/>
+                    <t t-call="aal_account_form.aal_delivery_order_tax_invoice_B_form"/>
                 </t>
             </t>
         </t>

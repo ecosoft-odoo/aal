@@ -1,5 +1,5 @@
 <odoo>
-    <report string="Purchase Order / ใบสั่งซื้อ"
+    <report string="Purchase Order"
             id="aal_purchase_order_form_pdf_report"
             model="purchase.order"
             name="aal_purchase_form.aal_purchase_order_form_pdf"

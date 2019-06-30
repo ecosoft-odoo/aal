@@ -1,0 +1,270 @@
+<odoo>
+    <template id="aal_delivery_order_tax_invoice_A_form">
+        <div class="header">
+            <div class="row">
+                <div class="col-5">
+                    <div>
+                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height: 75px;"/>
+                    </div>
+                    <table class="mt16">
+                        <tr>
+                            <td colspan="2">
+                                <span t-field="o.company_id.street"/><br/>
+                                <span t-field="o.company_id.street2"/>
+                                <span t-field="o.company_id.city"/>
+                                <span t-field="o.company_id.state_id.name"/>
+                                <span t-field="o.company_id.country_id.name"/>
+                                <span t-field="o.company_id.zip"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>T. <span t-field="o.company_id.phone"/></td>
+                            <td>F. +662 249 4283</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">TAX ID NO.: <span t-field="o.company_id.vat"/> / Branch: Head Office</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-7">
+                    <h5 class="text-right">
+                        <t t-if="i == 0">
+                            DELIVERY ORDER/TAX INVOICE (ORIGINAL)
+                        </t>
+                        <t t-else="">
+                            DELIVERY ORDER/TAX INVOICE (COPY)
+                        </t>
+                    </h5>
+                    <div class="row mt32">
+                        <div class="col-4 text-right">
+                            <p>
+                                Document No. :
+                            </p>
+                        </div>
+                        <div class="col-8">
+                            <span t-field="o.number"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p>
+                                Order No. :
+                            </p>
+                        </div>
+                        <div class="col-8">
+                            <span t-field="o.origin"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <p>
+                                Date :<br/>
+                                Page :
+                            </p>
+                        </div>
+                        <div class="col-8">
+                            <span t-field="o.date_invoice"/><br/>
+                            <span class="page"/> / <span class="topage"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article delivery_order_tax_invoice_form">
+            <div class="table_company">
+                <table class="table table-sm table-borderless table_company_data mt4">
+                    <thead>
+                        <tr class="text-center">
+                            <th>CUSTOMER DETAILS</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-3">
+                                NAME
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.partner_id.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                TAX ID NO.
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.partner_id.vat"/> / <span t-field="o.partner_id.branch"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                ADDRESS
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.partner_id.street"/>
+                                <span t-field="o.partner_id.street2"/>
+                                <span t-field="o.partner_id.city"/>
+                                <span t-field="o.partner_id.state_id.name"/>
+                                <span t-field="o.partner_id.country_id.name"/>
+                                <span t-field="o.partner_id.zip"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-3">
+                                PO.NO.
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                TERM
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.payment_term_id"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-sm table-borderless table_data mt8">
+                <thead>
+                    <tr class="text-center" valign="text-middle">
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Discount<br/>(%)</th>
+                        <th>Unit Price<br/>(after disc.)</th>
+                        <th>TOTAL<br/>(THB)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="o.invoice_line_ids" t-as="line">
+                        <td>
+                            <span t-field="line.name"/>
+                        </td>
+                        <td class="text-center">
+                            <span t-field="line.quantity"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.price_unit"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.discount"/>
+                        </td>
+                        <td class="text-right">
+                            <t t-set="price_unit_after_discount" t-value="float('%.2f' % line.price_subtotal) / float('%.2f' % line.quantity)"/>
+                            <span t-esc="'{0:,.2f}'.format(price_unit_after_discount)"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-esc="'{0:,.2f}'.format(line.price_subtotal)"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="clearfix">
+                <div class="row">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <table class="table table-sm table-borderless">
+                            <tr>
+                                <td class="text-right">
+                                    <strong>TOTAL BEFORE VAT</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_untaxed)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">
+                                    <strong>VAT 7%</strong>
+                                </td>
+                                <td class="text-right horizontal_line">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_tax)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">
+                                    <strong>Grand Total</strong>
+                                </td>
+                                <td class="text-right horizontal_double_line">
+                                    <span t-esc="'{0:,.2f}'.format(o.amount_total)"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <p>RECEIVED THE ABOVE IN GOOD ORDER AND CONDITION AT PRICE SHOWN</p>
+            </div>
+        </div>
+        <div class="footer table">
+            <div class="row">
+                <div class="col-4">
+                    <table class="table table-sm table_signature">
+                        <thead>
+                            <th>Received by:</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><br/><br/>Date :</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-4">
+                    <table class="table table-sm table_signature">
+                        <thead>
+                            <th>Delivered by:</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><br/><br/>Date :</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-4">
+                    <table class="table table-sm table_signature">
+                        <thead>
+                            <th>Authorized Signature:</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><br/><br/>Date :</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="text-right mt16" style="font-size: 14px;">
+                <t t-if="i == 1">
+                    FOR CUSTOMER / สำหรับลูกค้า
+                </t>
+                <t t-elif="i &gt; 1">
+                    FOR COMPANY / สำหรับบริษัท
+                </t>
+                <t t-else="">
+                    .
+                </t>
+            </p>
+        </div>
+    </template>
+
+    <template id="aal_delivery_order_tax_invoice_A_form_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="ncopies" t-value="4"/>
+                <t t-foreach="range(ncopies)" t-as="i">
+                    <t t-call="aal_account_form.aal_delivery_order_tax_invoice_A_form"/>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
