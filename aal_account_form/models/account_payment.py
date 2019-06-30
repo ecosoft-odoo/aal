@@ -1,8 +1,8 @@
-from openerp import models, api
+from odoo import models, api
 
 
-class SaleOrder(models.Model):
-    _inherit = 'sale.order'
+class AccountPayment(models.Model):
+    _inherit = 'account.payment'
 
     @api.multi
     def remove_menu_print(self, res, reports):
@@ -18,12 +18,13 @@ class SaleOrder(models.Model):
     @api.model
     def fields_view_get(self, view_id=None, view_type='form',
                         toolbar=False, submenu=False):
-        hide_reports_sale = [
-            'sale.action_report_saleorder',
+        hide_reports_base = [
+            'account.action_report_payment_receipt',
         ]
-        res = super(SaleOrder, self).fields_view_get(
+        res = super(AccountPayment, self).fields_view_get(
             view_id=view_id, view_type=view_type,
             toolbar=toolbar, submenu=submenu)
         if res and view_type in ['tree', 'form']:
-            self.remove_menu_print(res, hide_reports_sale)
+            # del menu report customer and vendor
+            self.remove_menu_print(res, hide_reports_base)
         return res

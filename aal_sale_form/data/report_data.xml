@@ -1,5 +1,5 @@
 <odoo>
-    <report string="Quotation / ใบเสนอราคา"
+    <report string="Quotation"
             id="aal_quotation_form_pdf_report"
             model="sale.order"
             name="aal_sale_form.aal_quotation_form_pdf"
