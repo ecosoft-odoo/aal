@@ -112,7 +112,7 @@
                                 </tr>
                                 <tr>
                                     <td>E-mail:</td>
-                                    <td><span t-field="o.partner_id.email"/></td>
+                                    <td><span t-field="o.attention_id.email"/></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -1,8 +1,8 @@
-from odoo import models, api
+from odoo import fields, models, api
 
 
-class AccountBilling(models.Model):
-    _inherit = 'account.billing'
+class StockPicking(models.Model):
+    _inherit = 'stock.picking'
 
     @api.multi
     def remove_menu_print(self, res, reports):
@@ -19,25 +19,13 @@ class AccountBilling(models.Model):
     def fields_view_get(self, view_id=None, view_type='form',
                         toolbar=False, submenu=False):
         hide_reports_base = [
-            'account_billing.report_account_billing',
+            'stock.action_report_delivery',
+            'stock.action_report_picking',
         ]
-        hide_reports_vendor = [
-            'aal_account_form.aal_billing_form_pdf_report',
-        ]
-        hide_reports_customer = [
-            'aal_account_form.aal_payment_request_form_pdf_report',
-        ]
-        type = self._context.get('bill_type')
-        res = super(AccountBilling, self).fields_view_get(
+        res = super(StockPicking, self).fields_view_get(
             view_id=view_id, view_type=view_type,
             toolbar=toolbar, submenu=submenu)
         if res and view_type in ['tree', 'form']:
             # del menu report customer and vendor
             self.remove_menu_print(res, hide_reports_base)
-            # del menu report vendor
-            if type and type not in ['out_invoice']:
-                self.remove_menu_print(res, hide_reports_vendor)
-            # del menu report customer
-            if type and type not in ['in_invoice']:
-                self.remove_menu_print(res, hide_reports_customer)
         return res
