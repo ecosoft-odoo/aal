@@ -28,37 +28,6 @@ class AccountInvoice(models.Model):
                         res.get('toolbar', {}).get('print').index(rec)]
         return res
 
-    # @api.model
-    # def fields_view_get(self, view_id=None, view_type='form',
-    #                     toolbar=False, submenu=False):
-    #     hide_reports_base = [
-    #         'account.account_invoices',
-    #         'account.account_invoices_without_payment',
-    #     ]
-    #     hide_reports_vendor = [
-    #         'aal_account_form.aal_debit_note_tax_invoice_form_pdf_report',
-    #         'aal_account_form.aal_delivery_order_form_pdf_report',
-    #         'aal_account_form.aal_delivery_order_tax_invoice_A_form_pdf_report',
-    #         'aal_account_form.aal_delivery_order_tax_invoice_B_form_pdf_report',
-    #     ]
-    #     hide_reports_customer = [
-    #         'aal_account_form.aal_credit_note_tax_invoice_pdf_report',
-    #     ]
-    #     type = self._context.get('type')
-    #     res = super(AccountInvoice, self).fields_view_get(
-    #         view_id=view_id, view_type=view_type,
-    #         toolbar=toolbar, submenu=submenu)
-    #     if res and view_type in ['tree', 'form']:
-    #         # del menu report customer and vendor
-    #         self.remove_menu_print(res, hide_reports_base)
-    #         # del menu report vendor
-    #         if type and type not in ['out_invoice', 'out_refund']:
-    #             self.remove_menu_print(res, hide_reports_vendor)
-    #         # del menu report customer
-    #         if type and type not in ['in_invoice', 'in_refund']:
-    #             self.remove_menu_print(res, hide_reports_customer)
-    #     return res
-
     @api.model
     def fields_view_get(self, view_id=None, view_type='form',
                         toolbar=False, submenu=False):
