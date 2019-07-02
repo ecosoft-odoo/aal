@@ -7,9 +7,9 @@
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
                 <field name="attention_id"/>
             </xpath>
-            <xpath expr="//field[@name='date_order']" position="replace">
-                <field name="date_order" invisible="1"/>
-            </xpath>
+            <xpath expr="//field[@name='date_order']" position="attributes">
+                <attribute name="invisible">1</attribute>
+           </xpath>
             <xpath expr="//field[@name='validity_date']" position="before">
                 <field name="date_order"/>
             </xpath>
