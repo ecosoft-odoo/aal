@@ -11,6 +11,7 @@
         'sale_stock',
     ],
     'data': [
+        'data/paper_format_delivery_order_tax_invoice_B.xml',
         'data/paper_format.xml',
         'data/report_data.xml',
         'reports/account_style.xml',
