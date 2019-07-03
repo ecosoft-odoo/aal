@@ -35,7 +35,7 @@
                             DELIVERY ORDER/TAX INVOICE (COPY)
                         </t>
                     </h5>
-                    <div class="row mt32">
+                    <div class="row mt16">
                         <div class="col-4 text-right">
                             <p>
                                 Document No. :
@@ -117,7 +117,7 @@
                                 PO.NO.
                             </div>
                             <div class="col-9">
-                                <span t-field="o.name"/>
+                                <!-- <span t-field="o.name"/> -->
                             </div>
                         </div>
                         <div class="row">

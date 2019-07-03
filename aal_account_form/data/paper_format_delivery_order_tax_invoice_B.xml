@@ -1,0 +1,17 @@
+<odoo>
+    <record id="paperformat_aal_delivery_order_tax_invoice_B" model="report.paperformat">
+        <field name="name">Delivery order/tax invoice B A4</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">57</field>
+        <field name="margin_bottom">45</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">54</field>
+        <field name="dpi">90</field>
+    </record>
+</odoo>
