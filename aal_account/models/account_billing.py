@@ -7,24 +7,18 @@ class AccountBilling(models.Model):
 
     subtotal = fields.Float(
         string='Subtotal',
-        readonly=True,
-        compute='_compute_subtotal',
+        compute='_compute_amount',
     )
-    withholding_tax = fields.Float(
+    amount_wht = fields.Float(
         string='Withholding Tax',
         digits=dp.get_precision('Account'),
-        required=True,
     )
     amount_total = fields.Float(
         string='Total',
-        readonly=True,
-        compute='_compute_amount_total',
+        compute='_compute_amount',
     )
 
-    @api.depends('invoice_ids')
-    def _compute_subtotal(self):
+    @api.depends('invoice_ids', 'amount_wht')
+    def _compute_amount(self):
         self.subtotal = sum(self.invoice_ids.mapped('amount_total'))
-
-    @api.depends('invoice_ids', 'withholding_tax')
-    def _compute_amount_total(self):
-        self.amount_total = sum(self.invoice_ids.mapped('amount_total')) - self.withholding_tax
+        self.amount_total = self.subtotal - self.amount_wht
