@@ -93,7 +93,6 @@
                 </thead>
                 <tbody>
                     <t t-set="n" t-value="1"/>
-                    <t t-set="total_amount" t-value="0"/>
                     <t t-foreach="o.invoice_ids" t-as="line">
                         <tr class="text-center">
                             <td>
@@ -111,7 +110,6 @@
                             </td>
                             <td class="text-right">
                                 <span t-esc="'{0:,.2f}'.format(line.amount_total)"/>
-                                <t t-set="total_amount" t-value="total_amount + line.amount_total"/>
                             </td>
                         </tr>
                     </t>
@@ -120,16 +118,32 @@
 
             <div class="clearfix">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-6">
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <table class="table table-sm table-borderless">
+                            <tr>
+                                <td class="text-right">
+                                    <strong>Subtotal</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="o.subtotal"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">
+                                    <strong>Withholding Tax</strong>
+                                </td>
+                                <td class="text-right horizontal_line">
+                                    <span t-field="o.withholding_tax"/>
+                                </td>
+                            </tr>
                             <tr>
                                 <td class="text-right">
                                     <strong>Grand Total</strong>
                                 </td>
                                 <td class="text-right horizontal_double_line">
-                                    <span t-esc="'{0:,.2f}'.format(total_amount)"/>
+                                    <span t-field="o.amount_total"/>
                                 </td>
                             </tr>
                         </table>
