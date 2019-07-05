@@ -5,10 +5,11 @@
         <field name="inherit_id" ref="account_billing.view_account_billing_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='invoice_ids']" position="after">
-                <group class="oe_subtotal_footer oe_right">
-                    <field name="subtotal" attrs="{'invisible': [('bill_type', '==', 'out_invoice')]}"/>
-                    <field name="amount_wht" attrs="{'invisible': [('bill_type', '==', 'out_invoice')]}"/>
-                    <field name="amount_total" class="oe_subtotal_footer_separator" attrs="{'invisible': [('bill_type', '==', 'out_invoice')]}"/>
+                <group class="oe_subtotal_footer oe_right" attrs="{'invisible': [('bill_type', '==', 'out_invoice')]}">
+                    <field name="subtotal"/>
+                    <field name="amount_diff_name" nolabel="1"/>
+                    <field name="amount_diff" nolabel="1"/>
+                    <field name="amount_total" class="oe_subtotal_footer_separator"/>
                 </group>
             </xpath>
         </field>

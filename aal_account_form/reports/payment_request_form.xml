@@ -132,10 +132,10 @@
                             </tr>
                             <tr>
                                 <td class="text-right">
-                                    <strong>Withholding Tax</strong>
+                                    <strong><span t-field="o.amount_diff_name"/></strong>
                                 </td>
                                 <td class="text-right horizontal_line">
-                                    <span t-field="o.amount_wht"/>
+                                    <span t-field="o.amount_diff"/>
                                 </td>
                             </tr>
                             <tr>
