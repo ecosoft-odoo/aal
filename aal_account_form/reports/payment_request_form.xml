@@ -149,6 +149,20 @@
                         </table>
                     </div>
                 </div>
+                <div class="row mt32">
+                    <div class="col-8">
+                        <table class="table table-sm table_note">
+                            <thead>
+                                <th>Notes</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span t-field="o.narration"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
