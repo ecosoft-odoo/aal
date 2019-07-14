@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.fsm</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="40"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block"
+                     data-string="Ecosoft FARM"
+                     string="Ecosoft FARM"
+                     data-key="ecofarm"
+                     groups="ecofarm.group_ecofarm_manager">
+                    <h2>Thai Localization</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="module_l10n_th_vendor_tax_invoice"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="module_l10n_th_vendor_tax_invoice"
+                                       string="Vendor Tax Invoicing"/>
+                                <div class="text-muted">
+                                    Allow filling in vendor tax invoice for VAT/Undue VAT
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="module_l10n_th_withholding_tax_cert"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="module_l10n_th_withholding_tax_cert"
+                                       string="Withholding Tax Certificate"/>
+                                <div class="text-muted">
+                                    Create/edit witholding tax certificate
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="module_l10n_th_withholding_tax_cert_form"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="module_l10n_th_withholding_tax_cert_form"
+                                       string="Withholding Tax Certificate Form"/>
+                                <div class="text-muted">
+                                    Print standard witholding tax certificate
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_ecofarm_config" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'ecofarm'}</field>
+    </record>
+
+</odoo>
