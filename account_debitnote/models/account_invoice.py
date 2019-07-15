@@ -13,6 +13,7 @@ class AccountInvoice(models.Model):
         comodel_name='account.invoice',
         inverse_name='debit_invoice_id',
         string='Debit Notes',
+        readonly=True,
     )
 
     @api.model
