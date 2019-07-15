@@ -8,13 +8,11 @@ class AccountInvoice(models.Model):
     debit_invoice_id = fields.Many2one(
         comodel_name='account.invoice',
         string='Debit Note',
-        readonly=True,
     )
     debit_invoice_ids = fields.One2many(
         comodel_name='account.invoice',
         inverse_name='debit_invoice_id',
         string='Debit Notes',
-        readonly=True,
     )
 
     @api.model

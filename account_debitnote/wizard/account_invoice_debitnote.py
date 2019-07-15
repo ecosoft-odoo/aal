@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError
 class AccountInvoiceDebitnote(models.TransientModel):
     """Debit Notes"""
 
-    _name = "account.invoice.debitnote"
+    _name = 'account.invoice.debitnote'
     _description = "Debit Note"
 
     description = fields.Char(
