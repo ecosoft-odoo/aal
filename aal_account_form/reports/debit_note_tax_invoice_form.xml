@@ -29,10 +29,10 @@
                 <div class="col-7">
                     <h5 class="text-right">
                         <t t-if="i == 0">
-                            CREDIT NOTE/TAX INVOICE (ORIGINAL)
+                            DEBIT NOTE/TAX INVOICE (ORIGINAL)
                         </t>
                         <t t-else="">
-                            CREDIT NOTE/TAX INVOICE (COPY)
+                            DEBIT NOTE/TAX INVOICE (COPY)
                         </t>
                     </h5>
                     <div class="row mt16">
@@ -155,7 +155,7 @@
             </table>
 
             <div class="clearfix">
-                <p><b>Credit Note Reason : </b><span t-field="o.name"/></p>
+                <p><b>Debit Note Reason : </b><span t-field="o.name"/></p>
                 <div class="row">
                     <div class="col-3">
                     </div>
