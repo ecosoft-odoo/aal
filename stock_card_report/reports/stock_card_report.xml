@@ -1,0 +1,65 @@
+<odoo>
+    <template id="report_stock_card_report_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <h2>Stock Card Report</h2>
+                    <t t-foreach="docs" t-as="o">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Product:</th>
+                                    <td>
+                                        <span t-field="o.product_id"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Location:</th>
+                                    <td>
+                                        <span t-field="o.stock_location_id"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Date from:</th>
+                                    <td>
+                                        <span t-field="o.date_from"/>
+                                    </td>
+                                    <th>Date To:</th>
+                                    <td>
+                                        <span t-field="o.date_to"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Reference</th>
+                                    <th>Input</th>
+                                    <th>Output</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.line_ids" t-as="l">
+                                    <td>
+                                        <span t-field="l.date"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="l.reference"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="l.product_in"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="l.product_out"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="l.product_balance"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                         </table>
+                     </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
