@@ -1,0 +1,29 @@
+<odoo>
+    <report string="Stock Card"
+            id="action_stock_card_report_pdf"
+            model="stock.card.report.wizard"
+            name="stock_card_report.report_stock_card_report_pdf"
+            file="stock_card_report.report_stock_card_report_pdf"
+            report_type="qweb-pdf"
+            print_report_name="'Stock Card - [%s]' % object.product_id.name"
+            paperformat="stock_card_report.paperformat_stock_card"/>
+
+    <report string="Stock Card"
+            id="action_stock_card_report_xlsx"
+            model="stock.card.report.wizard"
+            name="stock_card_report.report_stock_card_report_xlsx"
+            file="stock_move_line"
+            report_type="xlsx"
+            print_report_name="'Stock Card - [%s]' % object.product_id.name"
+            attachment_use="False"/>
+
+    <!-- <report
+        id="action_stock_card_report_xlsx"
+        model="mrp.bom.current.stock"
+        string="BoM: Current Stock Report XLSX"
+        report_type="xlsx"
+        name="mrp_bom_current_stock.report_mrpbom_current_stock_xlsx"
+        file="mrp_bom"
+        attachment_use="False"
+    /> -->
+</odoo>
