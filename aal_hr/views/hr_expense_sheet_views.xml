@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='accounting_date']" position="attributes">
                 <attribute name="invisible">0</attribute>
-                <attribute name="attrs">{'readonly': [('state', 'not in', ['draft', 'submit', 'approve'])]}</attribute>
+                <attribute name="attrs">{'readonly': [('state', 'not in', ['draft', 'submit'])]}</attribute>
             </xpath>
         </field>
     </record>
