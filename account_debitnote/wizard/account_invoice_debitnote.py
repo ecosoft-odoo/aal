@@ -1,5 +1,5 @@
 # Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).html)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
@@ -19,14 +19,14 @@ class AccountInvoiceDebitnote(models.TransientModel):
     date_invoice = fields.Date(
         string='Debit Note Date',
         default=fields.Date.context_today,
-        required=True
+        required=True,
     )
     date = fields.Date(string='Accounting Date')
     filter_debit = fields.Selection(
         [('debit', 'Create a draft debit note')],
         string='Debit Method',
         default='debit',
-        required=True
+        required=True,
     )
 
     @api.model

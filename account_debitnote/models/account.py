@@ -1,5 +1,5 @@
 # Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).html)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
 from odoo import models, fields, api, _
 
@@ -12,7 +12,7 @@ class AccountJournal(models.Model):
         string='Debit Note Entry Sequence',
         help="""This field contains the information related to the numbering of
                 the debit note entries of this journal.""",
-        copy=False
+        copy=False,
     )
     debitnote_sequence_number_next = fields.Integer(
         string='Debit Notes: Next Number',
