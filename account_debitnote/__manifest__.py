@@ -1,5 +1,5 @@
-# Copyright 2019 Ecosoft Co., Ltd.
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
 {
     'name': 'Debit Notes',
@@ -15,6 +15,7 @@
     'data': [
         'wizard/account_invoice_debitnote_view.xml',
         'views/account_invoice_view.xml',
+        'views/account_view.xml',
     ],
     'installable': True,
 }

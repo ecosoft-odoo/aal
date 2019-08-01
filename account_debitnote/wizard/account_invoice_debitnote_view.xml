@@ -1,4 +1,7 @@
+# Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 <odoo>
+
     <record id="view_account_invoice_debitnote" model="ir.ui.view">
         <field name="name">account.invoice.debitnote.form</field>
         <field name="model">account.invoice.debitnote</field>
@@ -25,8 +28,15 @@
                     </group>
                 </group>
                 <footer>
-                    <button string='Add Debit Note' name="invoice_debitnote" type="object" class="btn-primary"/>
-                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <button string="Add Debit Note"
+                            name="invoice_debitnote"
+                            type="object"
+                            class="btn-primary"
+                            />
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"
+                            />
                 </footer>
             </form>
         </field>
@@ -40,4 +50,5 @@
         <field name="view_id" ref="view_account_invoice_debitnote"/>
         <field name="target">new</field>
     </record>
+
 </odoo>
