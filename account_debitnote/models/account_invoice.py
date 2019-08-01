@@ -1,13 +1,5 @@
 # Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
-<<<<<<< HEAD
-<<<<<<< HEAD
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
-=======
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).html)
->>>>>>> 0070992... [12.0][ADD] account debitnote
-=======
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
->>>>>>> f98f450... [12.0][ADD] account debitnote
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
@@ -130,7 +122,7 @@ class AccountInvoice(models.Model):
                 date_invoice=date_invoice,
                 date=date,
                 description=description,
-                journal_id=journal_id
+                journal_id=journal_id,
             )
             new_invoice = self.create(invoice)
         return new_invoice
