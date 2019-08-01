@@ -1,3 +1,6 @@
+# Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).html)
+
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -45,8 +48,8 @@ class AccountInvoiceDebitnote(models.TransientModel):
             description = False
             for inv in inv_obj.browse(context.get('active_ids')):
                 if inv.state in ['draft', 'cancel']:
-                    raise ValidationError(_('''Cannot create debit note for
-                                           draft/cancel invoice.'''))
+                    raise ValidationError(_("""Cannot create debit note for
+                                           draft/cancel invoice."""))
 
                 date = form.date or False
                 description = form.description or inv.name
@@ -57,7 +60,7 @@ class AccountInvoiceDebitnote(models.TransientModel):
                 created_inv.append(debitnote.id)
 
         xml_id = (inv.type == 'out_invoice') and 'action_invoice_tree1' or\
-                 (inv.type == 'in_invoice') and 'action_invoice_tree2'
+                 (inv.type == 'in_invoice') and 'action_vendor_bill_template'
         result = self.env.ref('account.' + xml_id)
         result = result.read()[0]
         result['domain'] = [('id', 'in', created_inv)]
