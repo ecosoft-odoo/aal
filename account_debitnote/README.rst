@@ -23,16 +23,24 @@ Debit Notes
     :target: https://runbot.odoo-community.org/runbot/95/12.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
-In some situations, You need to add some service charge or add some fees
-you need to create debit note but in Invoicing don't have this module,
-so I am interested to add this module.
+In some situations, user need to add some service charge or some fees on top of what already invoiced.
+This module add new feature to "Add Debit Note" from customer invoice / vendor bill
 
 **Table of contents**
 
 .. contents::
    :local:
+
+Configuration
+=============
+
+To configure this module, you need to:
+
+- Make sure user has access to "Show Full Accounting Features".
+- Invoicing -> Configuration -> Journals -> Customer Invoices/Vendor Bills
+    -> check Dedicated Debit Note Sequence.
 
 Usage
 =====
@@ -40,12 +48,12 @@ Usage
 To use this module, you need to:
 
 - Go to Invoicing -> Customers -> Invoices.
-    - Create a new invoice and the Validate.
-    - Click on Add Debit Note.
-    - Get Reason. (You can add Account Date, If not Default is the same as the invoice.)
+    - Create a new invoice and validate.
+    - Click on Add Debit Note and fill in reasons. You can also specify an account date.
     - Click Add Debit Note, You will have a new one Invoice(Debit Note).
+    - Validate Debit note.
 
-    * You can also do the same thing in Vendors -> Bills
+You can also do the same with Vendor Bill.
 
 Bug Tracker
 ===========
