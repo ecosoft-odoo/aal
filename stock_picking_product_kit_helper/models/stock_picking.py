@@ -125,6 +125,8 @@ class StockPickingProductKitHelper(models.Model):
                 ('picking_id', '=', self.picking_id.id),
                 ('sale_line_id', '=', self.sale_line_id.id),
                 ('product_id', '=', mock_move.product_id.id)])
+            if not stock_move:
+                continue
             if len(stock_move) != 1:
                 raise ValidationError(
                     _('No matching detailed product %s for product kit %s') %
