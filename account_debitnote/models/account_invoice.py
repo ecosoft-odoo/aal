@@ -1,3 +1,6 @@
+# Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).html)
+
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -8,12 +11,14 @@ class AccountInvoice(models.Model):
     debit_invoice_id = fields.Many2one(
         comodel_name='account.invoice',
         string='Debit Note',
+        help="Reference to the origin invoice that create this debit note",
     )
     debit_invoice_ids = fields.One2many(
         comodel_name='account.invoice',
         inverse_name='debit_invoice_id',
         string='Debit Notes',
         readonly=True,
+        help="List all debit notes being created by this invoice",
     )
 
     @api.model
@@ -23,7 +28,7 @@ class AccountInvoice(models.Model):
             for one2many line creation
             :param list(browse_record) lines: records to convert
             :return: list of command tuple for one2many line creation
-             [(0, 0, dict of valueis), ...]
+             [(0, 0, dict of valueis)]
         """
         result = []
         for line in lines:
@@ -53,7 +58,6 @@ class AccountInvoice(models.Model):
             generation (making sure to call super() to establish a clean
             extension chain).
 
-            :param integer invoice_id: id of the invoice to create debit note
             :param dict invoice: read of the invoice to create debit note
             :param string invoice_date: debit note create date from the wizard
             :param integer date: force account.period from the wizard
