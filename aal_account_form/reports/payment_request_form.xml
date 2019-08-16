@@ -84,7 +84,7 @@
                         Payment Method:
                     </div>
                     <div class="col-10">
-                        <t t-field="o.payment_method"/>
+                        <span t-field="o.payment_method"/>
                     </div>
                 </div>
             </div>
