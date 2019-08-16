@@ -5,6 +5,9 @@ import odoo.addons.decimal_precision as dp
 class AccountBilling(models.Model):
     _inherit = 'account.billing'
 
+    payment_method = fields.Char(
+        string='Payment Method',
+    )
     subtotal = fields.Float(
         string='Subtotal',
         compute='_compute_amount',
