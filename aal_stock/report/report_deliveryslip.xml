@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_delivery_document" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@class='page']/table[3]" position="after">
+            <p>
+                <strong>Remark</strong><br/>
+                <span t-esc="o.note"/>
+            </p>
+        </xpath>
+    </template>
+</odoo>

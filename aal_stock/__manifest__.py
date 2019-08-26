@@ -12,5 +12,6 @@
         'stock',
     ],
     'data': [
+        'report/report_deliveryslip.xml',
     ],
 }
