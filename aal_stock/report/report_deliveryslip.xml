@@ -4,7 +4,7 @@
         <xpath expr="//div[@class='page']/table[3]" position="after">
             <p>
                 <strong>Remark</strong><br/>
-                <pre t-esc="o.note"/>
+                <pre t-esc="o.note" style="font-size:inherit;color:inherit;"/>
             </p>
         </xpath>
     </template>
