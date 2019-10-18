@@ -9,6 +9,7 @@
         'web',
         'account',
         'sale_stock',
+        'l10n_th_withholding_tax_cert_form',
     ],
     'data': [
         'data/paper_format_delivery_order_tax_invoice_B.xml',
@@ -23,6 +24,7 @@
         'reports/delivery_order_tax_invoice_B_form.xml',
         'reports/payment_request_form.xml',
         'reports/receipt_form.xml',
+        'reports/wht_cert_layout.xml',
     ],
     'installable': True,
 }

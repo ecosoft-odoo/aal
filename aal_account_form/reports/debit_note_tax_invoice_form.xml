@@ -45,11 +45,12 @@
                                 Page :
                             </p>
                         </div>
+                        <t t-set="invoice_origin_id" t-value="o._get_invoice_origin()"/>
                         <div class="col-5">
                             <span t-field="o.number"/><br/>
                             <span t-field="o.date_invoice"/><br/>
-                            <span t-field="o.refund_invoice_id.number"/><br/>
-                            <span t-field="o.refund_invoice_id.date_invoice"/><br/>
+                            <span t-field="o.origin"/><br/>
+                            <span t-field="invoice_origin_id.date_invoice"/><br/>
                             <span class="page"/> / <span class="topage"/>
                         </div>
                     </div>
@@ -98,14 +99,6 @@
                         </div>
                     </div>
                     <div class="col-5">
-                        <div class="row">
-                            <div class="col-3">
-                                PO.NO.
-                            </div>
-                            <div class="col-9">
-                                <span t-field="o.origin"/>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-3">
                                 TERM
@@ -157,16 +150,16 @@
             <div class="clearfix">
                 <p><b>Debit Note Reason : </b><span t-field="o.name"/></p>
                 <div class="row">
-                    <div class="col-3">
-                    </div>
+                    <div class="col-3"/>
                     <div class="col-9">
+                        <t t-set="invoice_origin_id" t-value="o._get_invoice_origin()"/>
                         <table class="table table-sm table-borderless">
                             <tr>
                                 <td class="text-right">
                                     <strong>VALUE OF GOODS OR SERVICES BASED ON THE INVOICE</strong>
                                 </td>
                                 <td class="text-right">
-                                    <span t-esc="'{0:,.2f}'.format(o.refund_invoice_id.amount_untaxed)"/>
+                                    <span t-esc="'{0:,.2f}'.format(invoice_origin_id.amount_untaxed)"/>
                                 </td>
                             </tr>
                             <tr>
@@ -174,8 +167,7 @@
                                         <strong>VALUE OF GOODS OR SERVICES IS CORRECT</strong>
                                 </td>
                                 <td class="text-right">
-                                    <t t-set="value_correct" t-value="float('%.2f' % o.amount_untaxed) - float('%.2f' % o.refund_invoice_id.amount_untaxed)"/>
-                                    <span t-esc="'{0:,.2f}'.format(value_correct)"/>
+                                    <span t-esc="'{0:,.2f}'.format(invoice_origin_id.amount_untaxed + o.amount_untaxed)"/>
                                 </td>
                             </tr>
                             <tr>

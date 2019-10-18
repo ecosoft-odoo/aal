@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_withholding_tax_cert_form" model="ir.ui.view">
+        <field name="name">view.withholding.tax.cert.form</field>
+        <field name="model">withholding.tax.cert</field>
+        <field name="inherit_id" ref="l10n_th_withholding_tax_cert.view_withholding_tax_cert_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet//group[2]//group[1]" position="inside">
+                <field name="book_number"/>
+                <field name="number"/>
+                <field name="sequence"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_withholding_tax_cert_tree" model="ir.ui.view">
+        <field name="name">view.withholding.tax.cert.tree</field>
+        <field name="model">withholding.tax.cert</field>
+        <field name="inherit_id" ref="l10n_th_withholding_tax_cert.view_withholding_tax_cert_tree"/>
+        <field name="arch" type="xml">
+            <field name="tax_payer" position="after">
+                <field name="base_amount_total"/>
+                <field name="tax_amount_total"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
