@@ -56,3 +56,9 @@ class AccountInvoice(models.Model):
             if type and type != 'out_invoice':
                 self.remove_menu_print(res, hide_reports_customer_refund)
         return res
+
+    def _get_invoice_origin(self):
+        invoice_id = self.env['account.invoice'].search([
+            ('number', '=', self.origin)
+        ])
+        return invoice_id
