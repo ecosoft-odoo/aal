@@ -226,3 +226,21 @@
         border-bottom: double;
     }
 }
+
+.o_report_withholding_tax_cert{
+    .book_number {
+        position: fixed;
+        top: 95px;
+        left: 1010px;
+    }
+    .number {
+        position: fixed;
+        top: 123px;
+        left: 1010px;
+    }
+    .sequence {
+        position: fixed;
+        top: 430px;
+        left: 180px;
+    }
+}

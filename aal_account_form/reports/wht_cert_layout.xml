@@ -1,0 +1,17 @@
+<odoo>
+    <template id="withholding_layout_report_inherit" inherit_id="l10n_th_withholding_tax_cert_form.withholding_layout_report">
+        <xpath expr="//div[@class='company_vat']" position="before">
+            <div>
+                <t t-if="o.book_number">
+                    <span class="book_number" t-field="o.book_number"/>
+                </t>
+                <t t-if="o.number">
+                    <span class="number" t-field="o.number"/>
+                </t>
+                <t t-if="o.sequence">
+                    <span class="sequence" t-field="o.sequence"/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>
