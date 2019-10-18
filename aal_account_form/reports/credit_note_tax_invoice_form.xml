@@ -100,14 +100,6 @@
                     <div class="col-5">
                         <div class="row">
                             <div class="col-3">
-                                PO.NO.
-                            </div>
-                            <div class="col-9">
-                                <span t-field="o.origin"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">
                                 TERM
                             </div>
                             <div class="col-9">
