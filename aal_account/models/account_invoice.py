@@ -13,5 +13,6 @@ class AccountInvoice(models.Model):
     def _compute_related_picking_numbers(self):
         for rec in self:
             pickings = rec.mapped('invoice_line_ids').mapped('sale_line_ids').\
-                mapped('order_id').mapped('picking_ids')
+                mapped('order_id').mapped('picking_ids').\
+                filtered(lambda t: t.state != 'cancel')
             rec.related_picking_numbers = ', '.join(pickings.mapped('name'))
