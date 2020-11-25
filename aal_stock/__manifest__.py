@@ -9,9 +9,10 @@
     'application': False,
     'installable': True,
     'depends': [
-        'stock',
+        'stock_account',
     ],
     'data': [
         'report/report_deliveryslip.xml',
+        'views/stock_account_views.xml',
     ],
 }
