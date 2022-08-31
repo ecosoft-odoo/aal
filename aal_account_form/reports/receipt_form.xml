@@ -91,6 +91,17 @@
                                 <span t-field="o.partner_id.zip"/>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-3">
+                                TAX ID NO.
+                            </div>
+                            <div class="col-9">
+                                <span t-field="o.partner_id.vat"/>
+                                <t t-if="o.partner_id.branch">
+                                    <span t-esc="'/ Branch {}'.format(o.partner_id.branch == '00000' and 'Head Office' or o.partner_id.branch)"/>
+                                </t>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-5">
                         <div class="row">
