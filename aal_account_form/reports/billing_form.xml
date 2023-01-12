@@ -133,7 +133,7 @@
                 <tbody>
                     <t t-set="n" t-value="1"/>
                     <t t-set="total_amount" t-value="0"/>
-                    <t t-foreach="o.invoice_ids" t-as="line">
+                    <t t-foreach="o.invoice_ids.sorted(lambda l: l.number)" t-as="line">
                         <tr class="text-center">
                             <td>
                                 <span t-esc="n"/>

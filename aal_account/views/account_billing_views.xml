@@ -15,6 +15,9 @@
                     <field name="amount_total" class="oe_subtotal_footer_separator"/>
                 </group>
             </xpath>
+            <xpath expr="//tree[@name='invoice_billing']" position="attributes">
+                <attribute name="default_order">number</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
