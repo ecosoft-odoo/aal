@@ -123,25 +123,32 @@
                 </thead>
                 <tbody>
                     <tr t-foreach="o.invoice_line_ids" t-as="line">
-                        <td>
-                            <span t-field="line.name"/>
-                        </td>
-                        <td class="text-center">
-                            <span t-field="line.quantity"/>
-                        </td>
-                        <td class="text-right">
-                            <span t-field="line.price_unit"/>
-                        </td>
-                        <td class="text-right">
-                            <span t-field="line.discount"/>
-                        </td>
-                        <td class="text-right">
-                            <t t-set="price_unit_after_discount" t-value="float('%.2f' % line.price_subtotal) / float('%.2f' % line.quantity)"/>
-                            <span t-esc="'{0:,.2f}'.format(price_unit_after_discount)"/>
-                        </td>
-                        <td class="text-right">
-                            <span t-esc="'{0:,.2f}'.format(line.price_subtotal)"/>
-                        </td>
+                        <t t-if="not line.display_type">
+                            <td>
+                                <span t-field="line.name"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="line.quantity"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.price_unit"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.discount"/>
+                            </td>
+                            <td class="text-right">
+                                <t t-set="price_unit_after_discount" t-value="float('%.2f' % line.price_subtotal) / float('%.2f' % line.quantity)"/>
+                                <span t-esc="'{0:,.2f}'.format(price_unit_after_discount)"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="'{0:,.2f}'.format(line.price_subtotal)"/>
+                            </td>
+                        </t>
+                        <t t-if="line.display_type == 'line_note'">
+                            <td colspan="99">
+                                <span t-field="line.name"/>
+                            </td>
+                        </t>
                     </tr>
                 </tbody>
             </table>
