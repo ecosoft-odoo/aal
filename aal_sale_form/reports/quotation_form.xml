@@ -145,7 +145,7 @@
             <div class="clearfix">
                 <div class="row">
                     <div class="col-6">
-                        REMARK.
+                        <span t-field="o.note"/>
                     </div>
                     <div class="col-6">
                         <table class="table table-sm table-borderless">
