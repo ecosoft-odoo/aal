@@ -5,7 +5,7 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     discount_untaxed = fields.Monetary(
-        string='Discount Untaxed',
+        string='Untaxed Discount',
         compute='_compute_discount',
         store=True,
         readonly=True,

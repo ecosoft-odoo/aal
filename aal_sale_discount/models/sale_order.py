@@ -5,7 +5,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     discount_untaxed = fields.Monetary(
-        string='Discount Untaxed',
+        string='Untaxed Discount',
         compute='_compute_discount',
         store=True,
         readonly=True,
